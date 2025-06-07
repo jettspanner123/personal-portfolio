@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+.oswald {
+    font-family: "Oswald", sans-serif;
+}
+
+.geist {
+    font-family: var(--font-geist-sans), sans-serif;
+}
+
