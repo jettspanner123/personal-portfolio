@@ -4,6 +4,11 @@ import LandingSection from "../app/ui_components/home_components/home_sections/L
 import InitialLoader from "@/app/ui_components/landing_loader/InitialLoader";
 import FeaturedWorksSection from "@/app/ui_components/home_components/home_sections/FeaturedWorksSection";
 import CustomMouse from "@/app/ui_components/custom_mouse/CustomMouse";
+import WhatDoIDoSection from "@/app/ui_components/home_components/home_sections/TechStackSection";
+import AboutSection from "@/app/ui_components/home_components/home_sections/AboutSection";
+
+
+// MARK: Image imports
 
 export default function Home(): React.JSX.Element {
 
@@ -20,7 +25,7 @@ export default function Home(): React.JSX.Element {
             <main className={`w-screen relative min-h-screen bg-black`}>
 
                 {/*MARK: Custom Mouse*/}
-                <CustomMouse />
+                <CustomMouse/>
 
                 {/*MARK: Loading Screen*/}
                 <InitialLoader/>
@@ -32,6 +37,14 @@ export default function Home(): React.JSX.Element {
 
                 {/*MARK: Featured Word Screen*/}
                 <FeaturedWorksSection/>
+
+
+                {/*MARK: Tech stack section*/}
+                <WhatDoIDoSection/>
+
+
+                {/*MARK: ABout me section*/}
+                <AboutSection/>
             </main>
         </React.Fragment>
     );

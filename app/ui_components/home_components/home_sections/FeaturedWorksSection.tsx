@@ -7,6 +7,11 @@ import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_sto
 import {ApplicationColor, ApplicationLinearGradient} from "@/app/constants/ui_constants";
 
 
+// MARK: Image imports
+import SweatItMockup from "@/app/assets/FirstMockup.png";
+import SweatItLogo from "@/app/assets/Dumbbell.png";
+
+
 export default function FeaturedWorksSection(): React.ReactElement {
 
     const {toggleFor, mouseHoverState, mouseSize} = useMouseHoverState();
@@ -31,7 +36,7 @@ export default function FeaturedWorksSection(): React.ReactElement {
         <React.Fragment>
             <section
                 ref={sectionRef}
-                className={`h-screen relative w-screen bg-white overflow-y-visible`}>
+                className={`min-h-screen relative w-screen bg-white overflow-y-visible !pb-[15rem]`}>
 
 
                 {/*MARK: Scroll Section Change Interaction*/}
@@ -74,6 +79,19 @@ export default function FeaturedWorksSection(): React.ReactElement {
                 <ProjectViewCards
                     heading={"Sweat It Fitness"}
                     body={"Our fitness app helps you stay healthy with personalized workouts, diet plans, and progress tracking. It offers AI-powered recommendations, AR-based form correction, and syncs with wearables. Whether you’re a beginner or advanced, the app adapts to your needs and keeps you motivated every step of the way."}
+                    iconBackground={ApplicationLinearGradient.current.appBackground}
+                    image={SweatItMockup}
+                    icon={SweatItLogo}
+                />
+                <ReverseProjectViewCards
+                    heading={"Infosys HMS"}
+                    body={"During my internship at Infosys, I developed a Hospital Management System using Swift. The app streamlined patient registration, appointment scheduling, and medical record management. It featured a clean UI, real-time data updates, and secure data handling, enhancing operational efficiency and improving the overall hospital workflow experience."}
+                    iconBackground={ApplicationLinearGradient.current.infosysHMSApp}
+                    image={SweatItMockup}
+                />
+                <ProjectViewCards
+                    heading={"Sweat It Fitness"}
+                    body={"Our fitness app helps you stay healthy with personalized workouts, diet plans, and progress tracking. It offers AI-powered recommendations, AR-based form correction, and syncs with wearables. Whether you’re a beginner or advanced, the app adapts to your needs and keeps you motivated every step of the way."}
                     iconBackground={ApplicationColor.current.appDarkBG}
                 />
                 <ReverseProjectViewCards
@@ -81,23 +99,6 @@ export default function FeaturedWorksSection(): React.ReactElement {
                     body={"During my internship at Infosys, I developed a Hospital Management System using Swift. The app streamlined patient registration, appointment scheduling, and medical record management. It featured a clean UI, real-time data updates, and secure data handling, enhancing operational efficiency and improving the overall hospital workflow experience."}
                     iconBackground={ApplicationLinearGradient.current.infosysHMSApp}
                 />
-
-
-                <div
-                    onMouseEnter={() => toggleFor(MouseHoverStateOptions.Link)}
-                    onMouseLeave={() => toggleFor(MouseHoverStateOptions.Link)}
-                    className={`w-full bg-red-300 h-[50rem]`}>
-
-                </div>
-
-                <div className={`w-full h-[50rem]`}>
-
-                </div>
-
-                <div className={`w-full h-[50rem]`}>
-
-                </div>
-
 
             </section>
         </React.Fragment>

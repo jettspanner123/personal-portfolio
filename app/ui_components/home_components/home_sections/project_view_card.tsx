@@ -1,7 +1,7 @@
 import React from "react";
 import {motion, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
-import {StaticImageData} from "next/image";
+import Image, {StaticImageData} from "next/image";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 
 interface ProjectViewCardProps {
@@ -24,9 +24,16 @@ export default function ProjectViewCards({
     const {toggleFor} = useMouseHoverState();
 
     const firstProjectRef: React.RefObject<HTMLDivElement | null> = React.useRef(null);
+    const imageRef: React.RefObject<HTMLDivElement | null> = React.useRef(null);
+
     const {scrollYProgress: firstProjectScrollProgress} = useScroll({
         target: firstProjectRef,
         offset: ["start end", "start 50%"]
+    });
+
+    const {scrollYProgress: imageScrollProgress} = useScroll({
+      target: imageRef,
+      offset: ["start end", "end start"]
     });
 
 
@@ -34,17 +41,11 @@ export default function ProjectViewCards({
         firstProjectImage: useSpring(useTransform(firstProjectScrollProgress, [0, 1], [900, 0]), springOptions),
         firstProjectSecondImage: useSpring(useTransform(firstProjectScrollProgress, [0.5, 1], [0, 1]), springOptions),
     };
+
+    const imageTransform = useTransform(imageScrollProgress, [0, 1], [100, -150]);
     return (
         <div
-            onMouseEnter={() => {
-                toggleFor(MouseHoverStateOptions.Link)
-            }}
-            onMouseLeave={() => {
-                toggleFor(MouseHoverStateOptions.Link)
-            }}
-            onClick={() => {
-                window.open(link, '_blank');
-            }}
+
             ref={firstProjectRef}
             className={`w-full !px-[7rem] h-[35rem] flex justify-between items-center !mt-[15rem]`}>
             <div className={`flex-1 h-full flex flex-col`}>
@@ -60,15 +61,31 @@ export default function ProjectViewCards({
             </div>
 
 
-            <div className={`flex-1 h-full relative`}>
+            <div
+                onMouseEnter={() => {
+                    toggleFor(MouseHoverStateOptions.Link)
+                }}
+                onMouseLeave={() => {
+                    toggleFor(MouseHoverStateOptions.Link)
+                }}
+                onClick={() => {
+                    window.open(link, '_blank');
+                }}
+                className={`flex-1 h-full relative`}>
 
                 {/*MARK: Image container*/}
                 <motion.div
+                    ref={imageRef}
                     style={{
-                        x: projectImagesScaleAnimation.firstProjectImage
+                        // x: projectImagesScaleAnimation.firstProjectImage
                     }}
-                    className={`h-[85%] aspect-[16/9] relative bg-gray-700`}>
+                    className={`h-[85%] aspect-[16/9] relative `}>
 
+                    {image && (
+                        <motion.div style={{ y: imageTransform}}>
+                            <Image src={image} alt={""}/>
+                        </motion.div>
+                    )}
 
                     {/*MARK: Icon container*/}
                     <motion.div
@@ -76,8 +93,13 @@ export default function ProjectViewCards({
                             scale: projectImagesScaleAnimation.firstProjectSecondImage,
                             background: iconBackground
                         }}
-                        className={`h-[10rem] aspect-square rounded-full absolute bottom-0 translate-y-1/3 -translate-x-1/3`}>
+                        className={`h-[10rem] aspect-square flex justify-center items-center rounded-full absolute bottom-0 translate-y-1/3 -translate-x-1/3`}>
 
+                        {icon && (
+                            <motion.div>
+                                <Image src={icon} alt={""} />
+                            </motion.div>
+                        )}
                     </motion.div>
 
 
