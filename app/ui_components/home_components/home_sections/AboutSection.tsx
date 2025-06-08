@@ -10,6 +10,8 @@ export default function AboutSection(): React.ReactElement {
         target: sectionRef,
         offset: ["start end", "start start"]
     })
+
+    const headingUnderlineWidth = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
     return (
         <React.Fragment>
             <section
@@ -34,6 +36,24 @@ export default function AboutSection(): React.ReactElement {
                             )
                         })
                     }
+                </div>
+
+
+
+                {/*MARK: Section header*/}
+                <div className={`w-full flex justify-center text-black items-center`}>
+                    <h1 className={`text-[3rem] !pt-[5rem] inline-block`}>
+                        My Profile
+
+                        <motion.div
+                            style={{width: headingUnderlineWidth, transformOrigin: "center"}}
+                            className={`w-full h-[11px] bg-black rounded-full`}/>
+                    </h1>
+                </div>
+
+
+                <div className={`w-[80%] !mx-auto h-screen !mt-[10rem]`}>
+
                 </div>
 
             </section>

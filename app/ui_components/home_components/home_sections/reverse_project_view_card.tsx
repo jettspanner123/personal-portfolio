@@ -39,7 +39,6 @@ export default function ReverseProjectViewCards({
     });
 
 
-
     const projectImagesScaleAnimation = {
         firstProjectImage: useSpring(useTransform(firstProjectScrollProgress, [0, 1], [-900, 0]), springOptions),
         firstProjectSecondImage: useSpring(useTransform(firstProjectScrollProgress, [0, 1], [0, 1]), springOptions),
@@ -76,7 +75,7 @@ export default function ReverseProjectViewCards({
                     className={`h-[85%] aspect-[16/9] relative`}>
 
                     {image && (
-                        <motion.div style={{ y: imageTransform}}>
+                        <motion.div style={{y: imageTransform}}>
                             <Image src={image} alt={""}/>
                         </motion.div>
                     )}
@@ -88,8 +87,12 @@ export default function ReverseProjectViewCards({
                             scale: projectImagesScaleAnimation.firstProjectSecondImage,
                             background: iconBackground
                         }}
-                        className={`h-[10rem] aspect-square rounded-full absolute bottom-0 right-0 translate-y-1/3 translate-x-1/3`}>
-
+                        className={`h-[10rem] flex justify-center items-center aspect-square rounded-full absolute bottom-0 right-0 translate-y-1/3 translate-x-1/3`}>
+                        {icon && (
+                            <motion.div>
+                                <Image src={icon} alt={""}/>
+                            </motion.div>
+                        )}
                     </motion.div>
 
 

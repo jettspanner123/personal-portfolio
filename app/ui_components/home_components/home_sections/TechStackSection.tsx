@@ -1,6 +1,7 @@
 import React from "react";
 import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
+import {ApplicationLinearGradient} from "@/app/constants/ui_constants";
 
 
 export default function WhatDoIDoSection(): React.ReactElement {
@@ -12,10 +13,38 @@ export default function WhatDoIDoSection(): React.ReactElement {
     });
 
     const headingUnderlineWidth = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
+
+
+    const firstContent: string = "I’m a full-stack developer with a strong passion for UI/UX and front-end development. I love crafting intuitive, visually engaging interfaces while also handling robust backend systems. My focus lies in building seamless, user-centric digital experiences—from clean code to thoughtful design, I bring both functionality and aesthetics together.";
+
+
+    const firstParagraphRef: React.RefObject<HTMLParagraphElement | null> = React.useRef(null);
+    const secondParagraphRef: React.RefObject<HTMLParagraphElement | null> = React.useRef(null);
+
+    const {scrollYProgress: firstParagraphScrollProgress} = useScroll({
+        target: firstParagraphRef,
+        offset: ["start end", "start 20%"]
+    })
+
+    const {scrollYProgress: reverseScrollProgress} = useScroll({
+        target: sectionRef,
+        offset: ["end end", "end 50%"]
+    });
+
+    const sectionOpacity = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
+    const sectionBlur = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
+    React.useEffect(() => {
+        sectionOpacity.on("change", newValue => {
+            console.log(newValue);
+        });
+    }, [])
+
+
     return (
         <React.Fragment>
-            <section
-                className={`min-h-[300vh] relative bg-black overflow-y-visible`}
+            <motion.section
+                style={{opacity: sectionOpacity, filter: sectionBlur}}
+                className={`min-h-[100vh] relative overflow-y-visible   translate-y-[2px]`}
                 ref={sectionRef}>
 
 
@@ -43,7 +72,7 @@ export default function WhatDoIDoSection(): React.ReactElement {
                 {/*MARK: Section header*/}
                 <div className={`w-full flex justify-center text-white items-center`}>
                     <h1 className={`text-[3rem] !pt-[5rem] inline-block`}>
-                        What Do I Do?
+                        My Expertise
 
                         <motion.div
                             style={{width: headingUnderlineWidth, transformOrigin: "center"}}
@@ -51,7 +80,55 @@ export default function WhatDoIDoSection(): React.ReactElement {
                     </h1>
                 </div>
 
-            </section>
+
+                <div className={`w-screen !pb-[15rem] !mt-[10rem] sticky top-[10rem]`}>
+
+
+                    {/*MARK: Scroll text animation thing*/}
+                    <p ref={firstParagraphRef}
+                       className={`text-white flex flex-wrap oswald font-bold text-[3.125rem] uppercase  w-[80%] !mx-auto text-justify`}>
+                        {firstContent.split(" ").map((word: string, index: number): React.ReactElement => {
+                            let start = index / firstContent.split(" ").length;
+                            let end = start + (1 / firstContent.split(" ").length);
+                            const rawOpacity = useTransform(firstParagraphScrollProgress, [start, end], [0, 1]);
+                            const opacity = useSpring(rawOpacity, springOptions);
+
+                            return (
+                                <span key={index}>
+                                    <span style={{opacity: 0.15}} className={`text-white absolute !ml-[12px]`}>
+                                       {word}
+                                    </span>
+
+                                    <motion.span
+                                        style={{opacity}}
+                                        className={`text-white !ml-[12px] !mt-[12px]`}>
+                                        {word}
+                                    </motion.span>
+                                </span>
+                            )
+                        })}
+                    </p>
+
+
+                    <div className={`w-[80%] !mx-auto h-[15rem] !mt-[5rem] flex`}>
+                        {
+                            ["Full Stack Dev", "FrontEnd / BackEnd", "Digital Design"].map((item: string, index: number): React.JSX.Element => {
+                                return (
+                                    <div
+                                        key={index}
+                                        style={{background: ApplicationLinearGradient.current.appBackground}}
+                                        className={`flex-1 h-full border-[0.5px] border-white flex justify-center items-center oswald font-bold text-[2.5rem] text-white uppercase`}>
+                                        {item}
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+
+
+                </div>
+
+            </motion.section>
         </React.Fragment>
     )
 }

@@ -32,8 +32,8 @@ export default function ProjectViewCards({
     });
 
     const {scrollYProgress: imageScrollProgress} = useScroll({
-      target: imageRef,
-      offset: ["start end", "end start"]
+        target: imageRef,
+        offset: ["start end", "end start"]
     });
 
 
@@ -82,7 +82,7 @@ export default function ProjectViewCards({
                     className={`h-[85%] aspect-[16/9] relative `}>
 
                     {image && (
-                        <motion.div style={{ y: imageTransform}}>
+                        <motion.div style={{y: imageTransform}}>
                             <Image src={image} alt={""}/>
                         </motion.div>
                     )}
@@ -97,7 +97,7 @@ export default function ProjectViewCards({
 
                         {icon && (
                             <motion.div>
-                                <Image src={icon} alt={""} />
+                                <Image src={icon} alt={""}/>
                             </motion.div>
                         )}
                     </motion.div>
