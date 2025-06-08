@@ -3,6 +3,7 @@ import React from "react";
 import LandingSection from "../app/ui_components/home_components/home_sections/LandingSection";
 import InitialLoader from "@/app/ui_components/landing_loader/InitialLoader";
 import FeaturedWorksSection from "@/app/ui_components/home_components/home_sections/FeaturedWorksSection";
+import CustomMouse from "@/app/ui_components/custom_mouse/CustomMouse";
 
 export default function Home(): React.JSX.Element {
 
@@ -17,6 +18,9 @@ export default function Home(): React.JSX.Element {
     return (
         <React.Fragment>
             <main className={`w-screen relative min-h-screen bg-black`}>
+
+                {/*MARK: Custom Mouse*/}
+                <CustomMouse />
 
                 {/*MARK: Loading Screen*/}
                 <InitialLoader/>

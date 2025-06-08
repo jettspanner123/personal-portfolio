@@ -54,4 +54,6 @@ export class ApplicationLinearGradient {
     appTransparentGradient: string = `linear-gradient(to bottom, transparent 0%, transparent 0%)`;
     appGreenGradient: string = `linear-gradient(to bottom, ${ApplicationColor.current.appGreenLight} 0%, ${ApplicationColor.current.appGreenDark} 100%)`;
     appThanosGradient: string = `linear-gradient(to bottom, ${ApplicationColor.current.appThanosLight} 0%, ${ApplicationColor.current.appThanosDark} 100%)`;
+    infosysHMSApp: string = `linear-gradient(135deg, #5F6CA0, #7886C7, #94A2DA)`
+
 }

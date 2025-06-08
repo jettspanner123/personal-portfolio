@@ -1,0 +1,26 @@
+import {create, StoreApi, UseBoundStore} from "zustand";
+
+export enum MouseHoverStateOptions {
+    None=0,
+    Link = 1,
+}
+
+interface MouseHoverStateInterface {
+    mouseHoverState: MouseHoverStateOptions;
+    setMouseHoverState: (state: MouseHoverStateOptions) => void;
+    mouseSize: number;
+    setMouseSize: (size: number) => void;
+    toggleFor: (type: MouseHoverStateOptions) => void;
+}
+
+export const useMouseHoverState: UseBoundStore<StoreApi<MouseHoverStateInterface>> = create<MouseHoverStateInterface>((set) => ({
+    mouseHoverState: MouseHoverStateOptions.None,
+    setMouseHoverState: (state: MouseHoverStateOptions) => set({mouseHoverState: state}),
+    mouseSize: 20,
+    setMouseSize: (size: number) => set({mouseSize: size}),
+    toggleFor: (type: MouseHoverStateOptions) => set((state) => ({
+        mouseHoverState: state.mouseHoverState == type ? MouseHoverStateOptions.None : type,
+        mouseSize: state.mouseSize === 20 ? 100 : 20
+    }))
+
+}))
