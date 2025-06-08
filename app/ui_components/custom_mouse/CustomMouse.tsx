@@ -7,7 +7,7 @@ import {GrLinkNext} from "react-icons/gr";
 
 export default function CustomMouse(): React.ReactElement {
 
-    const {mouseSize, mouseHoverState} = useMouseHoverState();
+    const {mouseSize, mouseHoverState, showMouseHover} = useMouseHoverState();
 
     const [mousePosition, setMousePosition] = React.useState<{ x: number; y: number }>({x: 0, y: 0});
 
@@ -21,7 +21,9 @@ export default function CustomMouse(): React.ReactElement {
     }, [mouseSize]);
     return (
         <motion.div
-            animate={{x: mousePosition.x, y: mousePosition.y, height: mouseSize}}
+            animate={{
+                x: mousePosition.x, y: mousePosition.y, height: mouseSize, scale: showMouseHover ? 1 : 0
+            }}
             transition={{
                 ...springOptions,
             }}

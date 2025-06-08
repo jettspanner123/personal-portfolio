@@ -81,12 +81,12 @@ export default function WhatDoIDoSection(): React.ReactElement {
                 </div>
 
 
-                <div className={`w-screen !pb-[15rem] !mt-[10rem] sticky top-[10rem]`}>
+                <div className={`w-screen !pb-[15rem] !mt-[10rem]`}>
 
 
                     {/*MARK: Scroll text animation thing*/}
                     <p ref={firstParagraphRef}
-                       className={`text-white flex flex-wrap oswald font-bold text-[3.125rem] uppercase  w-[80%] !mx-auto text-justify`}>
+                       className={`text-white flex flex-wrap roboto font-semibold text-[3.125rem] uppercase  w-[80%] !mx-auto text-justify`}>
                         {firstContent.split(" ").map((word: string, index: number): React.ReactElement => {
                             let start = index / firstContent.split(" ").length;
                             let end = start + (1 / firstContent.split(" ").length);
@@ -108,23 +108,6 @@ export default function WhatDoIDoSection(): React.ReactElement {
                             )
                         })}
                     </p>
-
-
-                    <div className={`w-[80%] !mx-auto h-[15rem] !mt-[5rem] flex`}>
-                        {
-                            ["Full Stack Dev", "FrontEnd / BackEnd", "Digital Design"].map((item: string, index: number): React.JSX.Element => {
-                                return (
-                                    <div
-                                        key={index}
-                                        style={{background: ApplicationLinearGradient.current.appBackground}}
-                                        className={`flex-1 h-full border-[0.5px] border-white flex justify-center items-center oswald font-bold text-[2.5rem] text-white uppercase`}>
-                                        {item}
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-
 
                 </div>
 
