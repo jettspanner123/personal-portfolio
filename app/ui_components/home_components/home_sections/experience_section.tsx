@@ -6,16 +6,20 @@ import {StaticImageData} from "next/image";
 
 // MARK: Image imports
 import SweatItLogo from "@/app/assets/Dumbbell.png";
-import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 
 export default function ExperienceSection(): React.ReactElement {
 
-    const {toggleFor} = useMouseHoverState();
 
     const sectionRef = React.useRef<HTMLElement | null>(null);
+    const accomplishmentHeadingRef = React.useRef<HTMLHeadingElement | null>(null);
 
     const {scrollYProgress: headingScrollProgress} = useScroll({
         target: sectionRef,
+        offset: ["start end", "start 50%"]
+    });
+
+    const {scrollYProgress: accomplishmentHeadingScrollProgress} = useScroll({
+        target: accomplishmentHeadingRef,
         offset: ["start end", "start 50%"]
     });
 
@@ -29,10 +33,38 @@ export default function ExperienceSection(): React.ReactElement {
         logo: StaticImageData;
     }
 
+    interface AccomplishmentsProps {
+        name: string;
+        company_name: string;
+        hackation_name: string;
+        date: string;
+    }
+
     const experiences: Array<ExperienceProps> = [
         {name: "Front End Developer", company_name: "Cantiliver Labs", duration: "2023", logo: SweatItLogo},
         {name: "Technical Head", company_name: "Geeks For Geeks", duration: "2023-2025", logo: SweatItLogo},
         {name: "Software Intern", company_name: "Infosys, Mysuru", duration: "2025", logo: SweatItLogo},
+    ];
+
+    const accomplishments: Array<AccomplishmentsProps> = [
+        {
+            name: "Regionals Winner",
+            company_name: "Geeks For Geeks",
+            hackation_name: "Solving For India Hackation",
+            date: "March, 2023"
+        },
+        {
+            name: "Larry Page UI Expert",
+            company_name: "CodingNinjas",
+            hackation_name: "UI/UX Comp",
+            date: "May, 2023"
+        },
+        {
+            name: "Runner Up",
+            company_name: "Geeks For Geeks",
+            hackation_name: "Solving For India Hackation",
+            date: "September, 2024"
+        },
     ];
 
     return (
@@ -76,12 +108,6 @@ export default function ExperienceSection(): React.ReactElement {
                         const x = useSpring(useTransform(headingScrollProgress, [start, end], [200, 0]), springOptions);
                         return (
                             <motion.div
-                                onMouseEnter={() => {
-                                    toggleFor(MouseHoverStateOptions.Read)
-                                }}
-                                onMouseLeave={() => {
-                                    toggleFor(MouseHoverStateOptions.Read)
-                                }}
                                 style={{x}}
                                 key={index}
                                 className={`w-full border-t-[0.5px] border-black flex justify-between`}>
@@ -100,6 +126,39 @@ export default function ExperienceSection(): React.ReactElement {
                             </motion.div>
                         )
                     })}
+
+
+                    <h1 ref={accomplishmentHeadingRef} className={`text-[1.5rem] oswald flex-1 justify-start !mt-[5rem] opacity-50`}>
+                        Accomplishments
+                    </h1>
+
+                    {
+                        accomplishments.map((item: AccomplishmentsProps, index: number): React.ReactElement => {
+                            const start = index / experiences.length;
+                            const end = start + (1 / experiences.length);
+
+                            const x = useSpring(useTransform(accomplishmentHeadingScrollProgress, [start, end], [200, 0]), springOptions);
+                            return (
+                                <motion.div
+                                    style={{ x }}
+                                    key={index}
+                                    className={`w-full border-t-[0.5px] border-black flex justify-between`}>
+                                    <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                        {item.name}
+                                    </h1>
+
+                                    <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                        {item.hackation_name}
+                                    </h1>
+
+                                    <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                        {item.date}
+                                    </h1>
+                                </motion.div>
+                            )
+                        })
+                    }
+
                 </div>
 
             </section>
