@@ -3,6 +3,7 @@ import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_sto
 import {AnimatePresence, motion} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import {GrLinkNext} from "react-icons/gr";
+import { CiRead } from "react-icons/ci";
 
 
 export default function CustomMouse(): React.ReactElement {
@@ -28,6 +29,8 @@ export default function CustomMouse(): React.ReactElement {
                 ...springOptions,
             }}
             className={`aspect-square rounded-full flex justify-center items-center fixed z-[1000] bg-blue-300 pointer-events-none`}>
+
+            {/*MARK: When link*/}
             <AnimatePresence mode={"wait"}>
                 {mouseHoverState === MouseHoverStateOptions.Link && (
                     <motion.div
@@ -36,6 +39,16 @@ export default function CustomMouse(): React.ReactElement {
                         exit={{scale: 0, rotate: -90}}
                     >
                         <GrLinkNext size={20}/>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+
+            {/*MARK: When read*/}
+            <AnimatePresence mode={"wait"}>
+                {mouseHoverState === MouseHoverStateOptions.Read && (
+                    <motion.div>
+                        <CiRead size={20}/>
                     </motion.div>
                 )}
             </AnimatePresence>

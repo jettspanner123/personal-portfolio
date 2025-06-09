@@ -1,0 +1,108 @@
+import React from "react";
+import {motion, useScroll, useSpring, useTransform} from "framer-motion";
+import {springOptions} from "@/app/constants/animation_constants";
+import {StaticImageData} from "next/image";
+
+
+// MARK: Image imports
+import SweatItLogo from "@/app/assets/Dumbbell.png";
+import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
+
+export default function ExperienceSection(): React.ReactElement {
+
+    const {toggleFor} = useMouseHoverState();
+
+    const sectionRef = React.useRef<HTMLElement | null>(null);
+
+    const {scrollYProgress: headingScrollProgress} = useScroll({
+        target: sectionRef,
+        offset: ["start end", "start 50%"]
+    });
+
+    const headingUnderlineScaleX = useSpring(useTransform(headingScrollProgress, [0, 1], [0, 1]), springOptions);
+
+
+    interface ExperienceProps {
+        name: string;
+        company_name: string;
+        duration: string;
+        logo: StaticImageData;
+    }
+
+    const experiences: Array<ExperienceProps> = [
+        {name: "Front End Developer", company_name: "Cantiliver Labs", duration: "2023", logo: SweatItLogo},
+        {name: "Technical Head", company_name: "Geeks For Geeks", duration: "2023-2025", logo: SweatItLogo},
+        {name: "Software Intern", company_name: "Infosys, Mysuru", duration: "2025", logo: SweatItLogo},
+    ];
+
+    return (
+        <React.Fragment>
+            <section
+                ref={sectionRef}
+                className={`min-h-screen h-screen bg-white w-screen flex `}>
+
+                <div className={`h-full flex-1 !p-[7rem]`}>
+
+                    <h1 className={`text-[4rem] inline-block`}>
+                        My Experience
+                        <motion.div
+                            style={{scaleX: headingUnderlineScaleX, transformOrigin: "left"}}
+                            className={`h-[10px] w-full bg-black rounded-full`}/>
+                    </h1>
+
+                </div>
+
+
+                <div className={`flex-1/3 h-full !p-[7rem]`}>
+
+                    <div className={`flex justify-between w-full opacity-50`}>
+                        <h1 className={`text-[1.5rem] oswald flex-1 justify-start`}>
+                            Position
+                        </h1>
+
+                        <h1 className={`text-[1.5rem] oswald flex-1 justify-start`}>
+                            Company
+                        </h1>
+
+                        <h1 className={`text-[1.5rem] oswald flex-1 justify-start`}>
+                            Duration
+                        </h1>
+                    </div>
+
+                    {experiences.map((item: ExperienceProps, index: number): React.ReactElement => {
+                        const start = index / experiences.length;
+                        const end = start + (1 / experiences.length);
+
+                        const x = useSpring(useTransform(headingScrollProgress, [start, end], [200, 0]), springOptions);
+                        return (
+                            <motion.div
+                                onMouseEnter={() => {
+                                    toggleFor(MouseHoverStateOptions.Read)
+                                }}
+                                onMouseLeave={() => {
+                                    toggleFor(MouseHoverStateOptions.Read)
+                                }}
+                                style={{x}}
+                                key={index}
+                                className={`w-full border-t-[0.5px] border-black flex justify-between`}>
+                                <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] flex-1`}>
+                                    {item.name}
+                                </h1>
+
+
+                                <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                    {item.company_name}
+                                </h1>
+
+                                <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] flex-1`}>
+                                    {item.duration}
+                                </h1>
+                            </motion.div>
+                        )
+                    })}
+                </div>
+
+            </section>
+        </React.Fragment>
+    )
+}

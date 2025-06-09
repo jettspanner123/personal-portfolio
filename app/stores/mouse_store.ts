@@ -3,6 +3,7 @@ import {create, StoreApi, UseBoundStore} from "zustand";
 export enum MouseHoverStateOptions {
     None = 0,
     Link = 1,
+    Read=2,
 }
 
 interface MouseHoverStateInterface {
