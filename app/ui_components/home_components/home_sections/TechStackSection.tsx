@@ -44,7 +44,7 @@ export default function WhatDoIDoSection(): React.ReactElement {
         <React.Fragment>
             <motion.section
                 style={{opacity: sectionOpacity, filter: sectionBlur}}
-                className={`min-h-[100vh] relative overflow-y-visible   translate-y-[2px]`}
+                className={`min-h-[100vh] relative overflow-y-visible translate-y-[2px] !pb-[15rem]`}
                 ref={sectionRef}>
 
 

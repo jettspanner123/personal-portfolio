@@ -7,6 +7,7 @@ import CustomMouse from "@/app/ui_components/custom_mouse/CustomMouse";
 import WhatDoIDoSection from "@/app/ui_components/home_components/home_sections/TechStackSection";
 import AboutSection from "@/app/ui_components/home_components/home_sections/AboutSection";
 import ExperienceSection from "@/app/ui_components/home_components/home_sections/experience_section";
+import SkillSetSection from "@/app/ui_components/home_components/home_sections/skllset_section";
 
 
 // MARK: Image imports
@@ -50,6 +51,10 @@ export default function Home(): React.JSX.Element {
 
                 {/*MARK: Experice section*/}
                 <ExperienceSection />
+
+
+                {/*MARK: Skillset section*/}
+                <SkillSetSection />
             </main>
         </React.Fragment>
     );

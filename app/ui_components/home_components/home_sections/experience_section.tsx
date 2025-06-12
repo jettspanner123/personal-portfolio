@@ -1,15 +1,15 @@
 import React from "react";
-import {motion, useScroll, useSpring, useTransform} from "framer-motion";
+import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import {StaticImageData} from "next/image";
 
 
 // MARK: Image imports
 import SweatItLogo from "@/app/assets/Dumbbell.png";
+import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 
 export default function ExperienceSection(): React.ReactElement {
-
-
+    const {toggleFor} = useMouseHoverState();
     const sectionRef = React.useRef<HTMLElement | null>(null);
     const accomplishmentHeadingRef = React.useRef<HTMLHeadingElement | null>(null);
 
@@ -102,13 +102,13 @@ export default function ExperienceSection(): React.ReactElement {
                     </div>
 
                     {experiences.map((item: ExperienceProps, index: number): React.ReactElement => {
-                        const start = index / experiences.length;
-                        const end = start + (1 / experiences.length);
+                        const start: number = index / experiences.length;
+                        const end: number = start + (1 / experiences.length);
 
-                        const x = useSpring(useTransform(headingScrollProgress, [start, end], [200, 0]), springOptions);
+                        const x: MotionValue<number> = useSpring(useTransform(headingScrollProgress, [start, end], [200, 0]), springOptions);
                         return (
                             <motion.div
-                                style={{x}}
+                                style={{x, willChange: "transform"}}
                                 key={index}
                                 className={`w-full border-t-[0.5px] border-black flex justify-between`}>
                                 <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] flex-1`}>
@@ -128,36 +128,35 @@ export default function ExperienceSection(): React.ReactElement {
                     })}
 
 
-                    <h1 ref={accomplishmentHeadingRef} className={`text-[1.5rem] oswald flex-1 justify-start !mt-[5rem] opacity-50`}>
+                    <h1 ref={accomplishmentHeadingRef}
+                        className={`text-[1.5rem] oswald flex-1 justify-start !mt-[5rem] opacity-50`}>
                         Accomplishments
                     </h1>
 
-                    {
-                        accomplishments.map((item: AccomplishmentsProps, index: number): React.ReactElement => {
-                            const start = index / experiences.length;
-                            const end = start + (1 / experiences.length);
+                    {accomplishments.map((item: AccomplishmentsProps, index: number): React.ReactElement => {
+                        const start: number = index / experiences.length;
+                        const end: number = start + (1 / experiences.length);
 
-                            const x = useSpring(useTransform(accomplishmentHeadingScrollProgress, [start, end], [200, 0]), springOptions);
-                            return (
-                                <motion.div
-                                    style={{ x }}
-                                    key={index}
-                                    className={`w-full border-t-[0.5px] border-black flex justify-between`}>
-                                    <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
-                                        {item.name}
-                                    </h1>
+                        const x: MotionValue<number> = useSpring(useTransform(accomplishmentHeadingScrollProgress, [start, end], [200, 0]), springOptions);
+                        return (
+                            <motion.div
+                                style={{x, willChange: "transform"}}
+                                key={index}
+                                className={`w-full border-t-[0.5px] border-black flex justify-between`}>
+                                <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                    {item.name}
+                                </h1>
 
-                                    <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
-                                        {item.hackation_name}
-                                    </h1>
+                                <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                    {item.hackation_name}
+                                </h1>
 
-                                    <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
-                                        {item.date}
-                                    </h1>
-                                </motion.div>
-                            )
-                        })
-                    }
+                                <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
+                                    {item.date}
+                                </h1>
+                            </motion.div>
+                        )
+                    })}
 
                 </div>
 
