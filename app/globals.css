@@ -23,3 +23,8 @@
     font-family: var(--font-roboto), sans-serif;
 }
 
+
+.blurBackground {
+    backdrop-filter: blur(10px);
+}
+

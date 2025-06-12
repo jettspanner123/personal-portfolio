@@ -8,6 +8,7 @@ import WhatDoIDoSection from "@/app/ui_components/home_components/home_sections/
 import AboutSection from "@/app/ui_components/home_components/home_sections/AboutSection";
 import ExperienceSection from "@/app/ui_components/home_components/home_sections/experience_section";
 import SkillSetSection from "@/app/ui_components/home_components/home_sections/skllset_section";
+import ContactSection from "@/app/ui_components/home_components/home_sections/contact_section";
 
 
 // MARK: Image imports
@@ -55,6 +56,9 @@ export default function Home(): React.JSX.Element {
 
                 {/*MARK: Skillset section*/}
                 <SkillSetSection />
+
+                {/*MARK: contact me section*/}
+                <ContactSection />
             </main>
         </React.Fragment>
     );

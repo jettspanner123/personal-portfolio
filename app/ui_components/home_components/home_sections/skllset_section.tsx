@@ -3,19 +3,19 @@ import {AnimatePresence, motion, MotionValue, useScroll, useSpring, useTransform
 import {springOptions} from "@/app/constants/animation_constants";
 import Image, {StaticImageData} from "next/image";
 import {ApplicationColor} from "@/app/constants/ui_constants";
+import useSkillSetStore from "@/app/stores/skillset_store";
 
 // MARK: Image imports here
 import NextJSImage from "@/app/assets/icons/next-js-seeklogo.svg";
 import ReactJSImage from "@/app/assets/icons/react-seeklogo.svg";
 import FramerMotionImage from "@/app/assets/icons/framer-motion-seeklogo.svg";
-import ZustandImage from "@/app/assets/icons/zustand.svg";
-// import TypescriptImage from "@/app/assets/icons/";
+import NodeJSImage from "@/app/assets/icons/node-js-seeklogo.svg";
 import FirebaseImage from "@/app/assets/icons/firebase-seeklogo.svg";
-import SupabaseImage from "@/app/assets/icons/supabase-seeklogo.svg";
-import PostGRESSImage from "@/app/assets/icons/postqresql-seeklogo.svg";
-import ExpressImage from "@/app/assets/icons/express-js-seeklogo.svg";
-import NodeImage from "@/app/assets/icons/node-js-seeklogo.svg";
+import SupabseImage from "@/app/assets/icons/supabase-seeklogo.svg";
+import SQLImage from "@/app/assets/icons/postqresql-seeklogo.svg";
 import PrismaImage from "@/app/assets/icons/prisma-seeklogo.svg";
+import MongoDbImage from "@/app/assets/icons/mongodb-seeklogo.png";
+import ZustandImage from "@/app/assets/icons/zustand.svg";
 
 
 export default function SkillSetSection(): React.ReactElement {
@@ -27,6 +27,8 @@ export default function SkillSetSection(): React.ReactElement {
         offset: ["start end", "start 50%"]
     })
 
+    console.log("Is is gay", NextJSImage === NodeJSImage);
+
     const headingUnderlineScaleX: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
 
     interface Skills {
@@ -35,10 +37,20 @@ export default function SkillSetSection(): React.ReactElement {
         image: StaticImageData;
     }
 
+
+    const {scrollYProgress: reverseScrollProgress} = useScroll({
+        target: sectionRef,
+        offset: ["end end", "end 50%"]
+    });
+
+    const sectionOpacity = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
+    const sectionBlur = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
+
     return (
         <React.Fragment>
-            <section
-                className={`flex min-h-screen w-screen bg-white relative`}
+            <motion.section
+                style={{opacity: sectionOpacity, filter: sectionBlur}}
+                className={`flex min-h-screen w-screen bg-white relative !pb-[25vh]`}
                 ref={sectionRef}>
 
                 <div className={`flex-1 h-[50vh] sticky top-0 !p-[7rem]`}>
@@ -53,7 +65,6 @@ export default function SkillSetSection(): React.ReactElement {
 
                 <div
                     className={`flex-1/3 h-full grid gap-0 !px-[7rem] grid-cols-2 items-start !pt-[7rem]`}>
-                    {/*// let border: string = index % 2 ? "border-[0.5px] border-l-0" : "border-[0.5px]";*/}
                     {/*<div key={index} className={`aspect-square border-black ${border}`}></div>*/}
 
                     <SkillCell
@@ -61,79 +72,84 @@ export default function SkillSetSection(): React.ReactElement {
                         imageContent={
                             <Image src={NextJSImage} alt="Next Js"/>
                         }
+                        index={0}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"React Js"}
                         imageContent={
-                            <Image src={ReactJSImage} alt="Next Js"/>
+                            <Image src={ReactJSImage} alt="React Js"/>
                         }
+                        index={1}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Framer Motion"}
                         imageContent={
                             <Image src={FramerMotionImage} alt="Next Js" className={`scale-40`}/>
                         }
+                        index={2}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Node Js"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={NodeJSImage} alt="Next Js"/>
                         }
+                        index={3}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Firebase"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={FirebaseImage} alt="Next Js" className={`scale-70`}/>
                         }
+                        index={4}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Supabase"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={SupabseImage} alt="Next Js" className={`scale-85`}/>
                         }
+                        index={5}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Postgresql"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={SQLImage} alt="Next Js" className={`scale-70`}/>
                         }
+                        index={6}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"MongoDb"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={MongoDbImage} alt="Next Js" className={`scale-70`}/>
                         }
+                        index={7}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Prisma ORM"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={PrismaImage} alt="Next Js" className={`scale-70`}/>
                         }
+                        index={8}
                     />
 
                     <SkillCell
-                        text={"Next Js"}
+                        text={"Zustand"}
                         imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
+                            <Image src={ZustandImage} alt="Next Js" className={`scale-50`}/>
                         }
+                        index={9}
                     />
 
-                    <SkillCell
-                        text={"Next Js"}
-                        imageContent={
-                            <Image src={NextJSImage} alt="Next Js"/>
-                        }
-                    />
+
                 </div>
-            </section>
+            </motion.section>
         </React.Fragment>
     )
 }
@@ -142,30 +158,48 @@ export default function SkillSetSection(): React.ReactElement {
 interface SkillCellInterface {
     text: string;
     imageContent: React.ReactElement;
+    index: number;
+    description?: string;
 }
 
-function SkillCell({text, imageContent}: SkillCellInterface): React.ReactElement {
+function SkillCell({text, imageContent, index}: SkillCellInterface): React.ReactElement {
 
     const [isHovered, setHovered] = React.useState<boolean>(false);
+
+    const {currentSelectedImage, setCurrentSelectedImage} = useSkillSetStore();
+
+
+    const isActive: boolean = currentSelectedImage === -1 || currentSelectedImage === index;
+    const border: string = index % 2 ? "border-[0.5px] border-l-0" : "border-[0.5px]";
     return (
         <motion.div
             layout
             onMouseEnter={() => {
                 setHovered(true);
+                setCurrentSelectedImage(index);
             }}
             onMouseLeave={() => {
                 setHovered(false);
+                setCurrentSelectedImage(-1);
             }}
             animate={{
-                x: isHovered ? -100 : 0
+                filter: isActive ? "blur(0px)" : "blur(5px)",
+                x: isActive ? -20 : 0,
+                opacity: isActive ? 1 : 0.5
             }}
-            className={'aspect-square relative border-black border-1 flex flex-col items-center justify-center overflow-hidden'}>
+            className={'aspect-square relative border-black border-[0.5px] flex flex-col items-center justify-center overflow-hidden bg-white'}>
+
+
+            {/*this is the image shit*/}
             <motion.div
                 layout
                 className={`w-full h-[80%]`}>
                 <motion.div
                     layout
-                    animate={{rotate: isHovered ? 360 : 0, scale: isHovered ? 1.1 : 1}}
+                    animate={{
+                        filter: isHovered ? "grayscale(0%)" : "grayscale(100%)",
+                        opacity: index === 0 || index === 8 || index === 9 ? isHovered ? 1 : 0.5 : 1
+                    }}
                     transition={{
                         duration: 0.75,
                         type: "spring",
@@ -186,7 +220,7 @@ function SkillCell({text, imageContent}: SkillCellInterface): React.ReactElement
                             ease: [0.85, 0, 0.15, 1]
                         }}
                         style={{lineHeight: 1, color: ApplicationColor.current.appDarkBG}}
-                        className={`w-full h-[20%] absolute bottom-0 left-0 uppercase flex justify-start items-end text-[2rem] !p-[1rem] geist font-light`}>
+                        className={`gap-[0.5rem] w-[70%] absolute bottom-0 left-0 uppercase flex flex-col text-[2rem] !p-[1rem] geist font-light`}>
                         {text}
                     </motion.div>
                 )}
