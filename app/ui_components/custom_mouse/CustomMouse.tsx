@@ -4,6 +4,8 @@ import {AnimatePresence, motion} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import {GrLinkNext} from "react-icons/gr";
 import {CiRead} from "react-icons/ci";
+import {MdEmail} from "react-icons/md";
+import {FaPhoneAlt} from "react-icons/fa";
 
 
 export default function CustomMouse(): React.ReactElement {
@@ -28,7 +30,7 @@ export default function CustomMouse(): React.ReactElement {
             transition={{
                 ...springOptions,
             }}
-            className={`aspect-square rounded-full fixed z-[1000] bg-blue-300 pointer-events-none`}>
+            className={`aspect-square rounded-full fixed z-[1000] mix-blend-difference bg-white pointer-events-none`}>
 
             {/*MARK: When link*/}
             <AnimatePresence mode={"wait"}>
@@ -55,6 +57,33 @@ export default function CustomMouse(): React.ReactElement {
                         className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
                     >
                         <CiRead size={20}/>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+
+            <AnimatePresence mode={"wait"}>
+                {mouseHoverState === MouseHoverStateOptions.Email && (
+                    <motion.div
+                        animate={{scale: 1, rotate: 0}}
+                        initial={{scale: 0, rotate: 90}}
+                        exit={{scale: 0, rotate: 90}}
+                        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
+                    >
+                        <MdEmail size={20}/>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence mode={"wait"}>
+                {mouseHoverState === MouseHoverStateOptions.Phone && (
+                    <motion.div
+                        animate={{scale: 1, rotate: 0}}
+                        initial={{scale: 0, rotate: 90}}
+                        exit={{scale: 0, rotate: 90}}
+                        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
+                    >
+                        <FaPhoneAlt size={20}/>
                     </motion.div>
                 )}
             </AnimatePresence>

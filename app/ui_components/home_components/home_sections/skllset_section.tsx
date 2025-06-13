@@ -31,20 +31,14 @@ export default function SkillSetSection(): React.ReactElement {
 
     const headingUnderlineScaleX: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
 
-    interface Skills {
-        name: string;
-        description: string;
-        image: StaticImageData;
-    }
-
 
     const {scrollYProgress: reverseScrollProgress} = useScroll({
         target: sectionRef,
         offset: ["end end", "end 50%"]
     });
 
-    const sectionOpacity = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
-    const sectionBlur = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
+    const sectionOpacity: MotionValue<number> = useSpring(useTransform(reverseScrollProgress, [0, 1], [1, 0.5]), springOptions);
+    const sectionBlur: MotionValue<string> = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
 
     return (
         <React.Fragment>
