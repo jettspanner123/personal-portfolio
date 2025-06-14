@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
@@ -9,6 +10,7 @@ import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_sto
 export default function ContactSection(): React.ReactElement {
 
     const {toggleFor, toggleShowMouseHover} = useMouseHoverState();
+
 
     const sectionRef = React.useRef<HTMLElement | null>(null);
     const headingContainerRef = React.useRef<HTMLDivElement | null>(null);
@@ -26,6 +28,8 @@ export default function ContactSection(): React.ReactElement {
     const emailYScale = useSpring(useTransform(scrollYProgress, [0, 1], [1000, 0]), springOptions);
     const phoneYScale = useSpring(useTransform(scrollYProgress, [0.25, 1], [1000, 0]), springOptions);
 
+    const linkedInScale: MotionValue<number> = useSpring(useTransform(headingScrollProgress, [0, 1], [0, 1]), springOptions);
+    const twitterScale: MotionValue<number> = useSpring(useTransform(headingScrollProgress, [0.25, 1], [0, 1]), springOptions);
 
     return (
         <React.Fragment>
@@ -55,8 +59,14 @@ export default function ContactSection(): React.ReactElement {
 
                 <div className={`flex-1 h-full flex flex-col overflow-hidden`}>
 
-                    <div className={`flex-1/3 w-full`}>
 
+                    {/*MARK: Mouse Interaction*/}
+                    <div
+                        className={`flex-1/3 w-full overflow-hidden flex justify-center items-center !pr-[9vh]`}>
+                        <h1
+                            className={`text-[20rem] font-bold oswald text-white`}>
+                            U
+                        </h1>
                     </div>
 
                     <div
@@ -96,31 +106,39 @@ export default function ContactSection(): React.ReactElement {
                         className={`!p-[3rem] flex items-center justify-end gap-[1rem]`}>
 
                         {/*MARK: Linked in button*/}
-                        <MouseMagnetic>
-                            <motion.div
-                                whileHover={{scale: 1.25, zIndex: 100, position: "relative"}}
-                                className={`h-[6rem] blurBackground aspect-square border-white hover:cursor-pointer border-[1px] rounded-full grid place-items-center text-center`}>
-                                <MouseMagnetic>
-                                    <div className={`h-[6rem] aspect-square flex justify-center items-center`}>
-                                        <FaLinkedin size={30} className={`text-white`}/>
-                                    </div>
-                                </MouseMagnetic>
-                            </motion.div>
-                        </MouseMagnetic>
+                        <motion.div
+                            style={{scale: linkedInScale}}
+                        >
+                            <MouseMagnetic>
+                                <motion.div
+                                    whileHover={{scale: 1.25, zIndex: 100, position: "relative"}}
+                                    className={`h-[6rem] blurBackground aspect-square border-white hover:cursor-pointer border-[1px] rounded-full grid place-items-center text-center`}>
+                                    <MouseMagnetic>
+                                        <div className={`h-[6rem] aspect-square flex justify-center items-center`}>
+                                            <FaLinkedin size={30} className={`text-white`}/>
+                                        </div>
+                                    </MouseMagnetic>
+                                </motion.div>
+                            </MouseMagnetic>
+                        </motion.div>
 
 
                         {/*MARK: Twitter button*/}
-                        <MouseMagnetic>
-                            <motion.div
-                                whileHover={{scale: 1.25, zIndex: 100, position: "relative"}}
-                                className={`h-[6rem] blurBackground aspect-square border-white hover:cursor-pointer border-[1px] rounded-full grid place-items-center text-center`}>
-                                <MouseMagnetic>
-                                    <div className={`h-[6rem] aspect-square flex justify-center items-center`}>
-                                        <FaTwitter size={30} className={`text-white`}/>
-                                    </div>
-                                </MouseMagnetic>
-                            </motion.div>
-                        </MouseMagnetic>
+                        <motion.div
+                            style={{scale: twitterScale}}
+                        >
+                            <MouseMagnetic>
+                                <motion.div
+                                    whileHover={{scale: 1.25, zIndex: 100, position: "relative"}}
+                                    className={`h-[6rem] blurBackground aspect-square border-white hover:cursor-pointer border-[1px] rounded-full grid place-items-center text-center`}>
+                                    <MouseMagnetic>
+                                        <div className={`h-[6rem] aspect-square flex justify-center items-center`}>
+                                            <FaTwitter size={30} className={`text-white`}/>
+                                        </div>
+                                    </MouseMagnetic>
+                                </motion.div>
+                            </MouseMagnetic>
+                        </motion.div>
                     </div>
 
 
@@ -133,7 +151,7 @@ export default function ContactSection(): React.ReactElement {
                             onMouseLeave={() => {
                                 toggleFor(MouseHoverStateOptions.None)
                             }}
-                            className={`text-[3rem] relative geist font-normal text-white/50 hover:text-white text-right border-t-[0.5px] border-b-[0.5px] border-white/50 hover:border-white transition-colors duration-300 !p-[2rem]`}
+                            className={`text-[2rem] relative geist font-light text-white/30 hover:text-white text-right border-t-[0.5px] border-b-[0.5px] border-white/50 hover:border-white transition-colors duration-300 !p-[2rem]`}
                         >
                             uddeshya872@gmail.com
 
@@ -148,7 +166,7 @@ export default function ContactSection(): React.ReactElement {
                             onMouseLeave={() => {
                                 toggleFor(MouseHoverStateOptions.None)
                             }}
-                            className={`text-[3rem] geist font-light relative text-white/50 hover:text-white text-right border-t-[0.5px] border-b-[0.5px] border-white/50 hover:border-white !p-[2rem] transition-colors duration-300`}
+                            className={`text-[2rem] geist font-light relative text-white/30 hover:text-white text-right border-t-[0.5px] border-b-[0.5px] border-white/50 hover:border-white !p-[2rem] transition-colors duration-300`}
                         >
                             +91 9875660105
                             <p className={`absolute top-1/2 -translate-y-1/2 oswald uppercase text-[1.5rem] font-normal`}>Phone</p>

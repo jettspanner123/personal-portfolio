@@ -1,7 +1,7 @@
+"use client";
 import React from "react";
 import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
-import {ApplicationLinearGradient} from "@/app/constants/ui_constants";
 
 
 export default function WhatDoIDoSection(): React.ReactElement {
@@ -44,7 +44,7 @@ export default function WhatDoIDoSection(): React.ReactElement {
         <React.Fragment>
             <motion.section
                 style={{opacity: sectionOpacity, filter: sectionBlur}}
-                className={`min-h-[100vh] relative overflow-y-visible translate-y-[2px] !pb-[15rem]`}
+                className={`min-h-[100vh] relative overflow-y-visible translate-y-[2px] !pb-[25rem]`}
                 ref={sectionRef}>
 
 

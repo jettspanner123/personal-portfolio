@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";

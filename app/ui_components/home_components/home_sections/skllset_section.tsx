@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 import {AnimatePresence, motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
-import Image, {StaticImageData} from "next/image";
+import Image from "next/image";
 import {ApplicationColor} from "@/app/constants/ui_constants";
 import useSkillSetStore from "@/app/stores/skillset_store";
 
@@ -27,7 +28,6 @@ export default function SkillSetSection(): React.ReactElement {
         offset: ["start end", "start 50%"]
     })
 
-    console.log("Is is gay", NextJSImage === NodeJSImage);
 
     const headingUnderlineScaleX: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
 

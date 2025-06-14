@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Geist, Geist_Mono, Oswald, Roboto_Condensed} from "next/font/google";
 import "./globals.css";
 import {NextFontWithVariable} from "next/dist/compiled/@next/font";
+import React from "react";
 
 
 const roboto: NextFontWithVariable = Roboto_Condensed({

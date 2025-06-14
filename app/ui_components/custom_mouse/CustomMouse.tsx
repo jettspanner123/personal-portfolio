@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 import {AnimatePresence, motion} from "framer-motion";
