@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import {motion} from "framer-motion";
-import {clearInterval} from "node:timers";
 
 export default function InitialLoader(): React.JSX.Element {
 
@@ -10,7 +9,7 @@ export default function InitialLoader(): React.JSX.Element {
     React.useEffect((): void => {
         setTimeout((): void => {
             setTransitioning(true);
-        }, 1500);
+        }, 2000);
     })
     return (
         <React.Fragment>
@@ -31,6 +30,19 @@ export default function InitialLoader(): React.JSX.Element {
                                 {index === 2 && (
                                     <div
                                         className={`text-black alumni-sans-sc-400 w-full h-full flex justify-center items-center`}>
+                                        {"uddeshya-singh".split("").map((item: string, index: number): React.ReactElement => {
+                                            return (
+                                                <motion.span
+                                                    key={index}
+                                                    className={`uppercase text-[2rem] inline-block`}
+                                                    animate={{ scaleY: 1 }}
+                                                    initial={{ scaleY: 0 }}
+                                                    transition={{ duration: 0.75, delay: index * 0.05, ease: [0.85, 0, 0.15, 1]}}
+                                                >
+                                                    {item}
+                                                </motion.span>
+                                            )
+                                        })}
                                     </div>
                                 )}
                             </motion.div>

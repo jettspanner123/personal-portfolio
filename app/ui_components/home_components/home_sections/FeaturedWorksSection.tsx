@@ -87,6 +87,7 @@ export default function FeaturedWorksSection(): React.ReactElement {
                     iconBackground={ApplicationLinearGradient.current.appBackground}
                     image={SweatItMockup}
                     icon={SweatItLogo}
+                    link={"/sweatit"}
                 />
                 <ReverseProjectViewCards
                     heading={"Infosys HMS"}

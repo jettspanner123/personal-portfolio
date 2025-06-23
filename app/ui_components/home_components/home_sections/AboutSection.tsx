@@ -80,13 +80,14 @@ export default function AboutSection(): React.ReactElement {
                         >
                             {aboutMeContent.split(" ").map((item: string, index: number): React.ReactElement => {
                                 const start: number = index / aboutMeContent.split(" ").length;
-                                const end = start + (1 / aboutMeContent.split(" ").length);
-                                const scale = useSpring(useTransform(scrollYProgress, [start, end], [0, 1]), springOptions);
+                                const end: number = start + (1 / aboutMeContent.split(" ").length);
+                                const scale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [start, end], [0, 1]), springOptions);
+                                const filter: MotionValue<string> = useTransform(scrollYProgress, [start, end], ["blur(5px)", "blur(0px)"]);
                                 return (
                                     <motion.span
                                         key={index}
                                         className={`!ml-[12px]`}
-                                        style={{scale, transformOrigin: "left"}}
+                                        style={{scale, filter, transformOrigin: "left"}}
                                     >
                                         {item}
                                     </motion.span>

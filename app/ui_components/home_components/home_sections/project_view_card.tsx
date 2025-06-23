@@ -3,6 +3,7 @@ import {motion, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import Image, {StaticImageData} from "next/image";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
+import {useHomePageState} from "@/app/stores/homepage_store";
 
 interface ProjectViewCardProps {
     heading: string;
@@ -43,6 +44,8 @@ export default function ProjectViewCards({
     };
 
     const imageTransform = useTransform(imageScrollProgress, [0, 1], [100, -150]);
+
+    const {setPageChanging} = useHomePageState();
     return (
         <div
 
@@ -69,7 +72,11 @@ export default function ProjectViewCards({
                     toggleFor(MouseHoverStateOptions.Link)
                 }}
                 onClick={() => {
-                    window.open(link, '_blank');
+                    if (!link) return;
+                    setPageChanging(true);
+                    setTimeout(() => {
+                        window.location.assign(link);
+                    }, 1500);
                 }}
                 className={`flex-1 h-full relative`}>
 

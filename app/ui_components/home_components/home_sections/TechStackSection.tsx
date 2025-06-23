@@ -19,7 +19,6 @@ export default function WhatDoIDoSection(): React.ReactElement {
 
 
     const firstParagraphRef: React.RefObject<HTMLParagraphElement | null> = React.useRef(null);
-    const secondParagraphRef: React.RefObject<HTMLParagraphElement | null> = React.useRef(null);
 
     const {scrollYProgress: firstParagraphScrollProgress} = useScroll({
         target: firstParagraphRef,
@@ -31,8 +30,8 @@ export default function WhatDoIDoSection(): React.ReactElement {
         offset: ["end end", "end 50%"]
     });
 
-    const sectionOpacity = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
-    const sectionBlur = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
+    const sectionOpacity: MotionValue<number> = useSpring(useTransform(reverseScrollProgress, [0, 1], [1, 0.5]), springOptions);
+    const sectionBlur: MotionValue<string> = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
     React.useEffect(() => {
         sectionOpacity.on("change", newValue => {
             console.log(newValue);
