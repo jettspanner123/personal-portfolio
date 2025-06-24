@@ -95,6 +95,7 @@ export default function FeaturedWorksSection(): React.ReactElement {
                     iconBackground={ApplicationLinearGradient.current.infosysHMSApp}
                     image={MedfosysMockup}
                     icon={MedfosysLogo}
+                    link={"/sweatit"}
                 />
                 <ProjectViewCards
                     heading={"Sweat It Official Website"}

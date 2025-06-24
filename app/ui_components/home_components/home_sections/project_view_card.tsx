@@ -76,7 +76,7 @@ export default function ProjectViewCards({
                     setPageChanging(true);
                     setTimeout(() => {
                         window.location.assign(link);
-                    }, 1500);
+                    }, 2200);
                 }}
                 className={`flex-1 h-full relative`}>
 

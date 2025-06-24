@@ -17,55 +17,57 @@ export default function Page(): React.ReactElement {
     }, []);
 
 
-    const heroImageContainerRef = React.useRef<HTMLDivElement | null>(null);
-    const {scrollYProgress} = useScroll({});
 
-    const y = useSpring(useTransform(scrollYProgress, [0, 1], [0, 30]), springOptions);
     return (
         <React.Fragment>
             <main
                 className={`min-h-[200vh] min-w-screen relative`}
             >
 
-                <div className={`h-[30vh] absolute w-screen flex items-end justify-center z-[11]`}>
-                    <motion.h1
-                        animate={{ opacity: 1}}
-                        initial={{ opacity: 0}}
-                        transition={{
-                            duration: 1,
-                            delay: 3
-                        }}
-                        className={`relative text-[7rem] blurBackground w-screen text-center uppercase font-medium text-white bottom-0 translate-y-[40%]`}>
-                        {"Sweat-ItAIFitness".split("").map((item: string, index: number): React.ReactElement => {
+                <motion.div
+                    className={`flex justify-center uppercase items-center w-screen h-[20vh] absolute text-white text-[5rem] oswald font-medium z-[12] top-[5rem]`}
+                >
 
-                            function leftMargin(index: number): number {
-                                if (index === 8 || index === 10) return 25;
-                                else return 0;
-                            }
+                    {
+                        "Sweat-It".split("").map((item: string, index: number): React.ReactElement => {
 
+                            const leftMargin: number = item === "_" ? 20 : 0;
+                            const rightMargin: number = item === "," ? 20 : 0;
                             return (
                                 <motion.span
-                                    animate={{
-                                        scaleY: 1
-                                    }}
-                                    initial={{ scaleY: 0}}
+                                    animate={{ scaleY: 1 }}
+                                    initial={{ scaleY: 0 }}
                                     transition={{
-                                        duration: 1,
-                                        delay: (index * 0.05) + 4   
-                                    }}
-                                    style={{
-                                        marginLeft: leftMargin(index),
-                                        transformOrigin: "bottom"
+                                        duration: 0.7,
+                                        delay: (index * 0.05) + 4,
                                     }}
                                     key={index}
-                                    className={`inline-block`}
+                                    style={{marginLeft: leftMargin, marginRight: rightMargin}}
+                                    className={``}
                                 >
-                                    {item}
+                                    {item !== "_" ? item : ""}
                                 </motion.span>
                             )
-                        })}
-                    </motion.h1>
-                </div>
+                        })
+                    }
+
+                </motion.div>
+
+
+
+                {/*MARK: Overlay*/}
+                <motion.div
+                    animate={{opacity: 1}}
+                    initial={{opacity: 0}}
+                    transition={{
+                        duration: 2,
+                        delay: 3.5,
+                        ease: [0.61, 1, 0.88, 1]
+                    }}
+                    className={`w-screen origin-bottom h-[20vh] text-white uppercase flex justify-center items-center text-[5rem] oswald font-medium absolute z-[11] bg-gradient-to-t from-black to-transparent`}>
+
+
+                </motion.div>
 
 
                 {/*MARK: Hero Image*/}
@@ -76,7 +78,7 @@ export default function Page(): React.ReactElement {
                         borderRadius: "10rem"
                     }}
                     animate={{
-                        height: "30vh",
+                        height: "20vh",
                         y: "0%",
                         scale: 1,
                         borderRadius: "0",
@@ -100,7 +102,7 @@ export default function Page(): React.ReactElement {
                             ease: [0.85, 0, 0.15, 1],
                         }
                     }}
-                    className={`h-screen w-screen absolute bg-blue-300 top-0 overflow-hidden`}>
+                    className={`h-screen w-screen absolute top-0 overflow-hidden`}>
                     <Image
                         src={SweatItMockup}
                         alt={""}
