@@ -1,10 +1,14 @@
 "use client";
 import React from "react";
-import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
+import {motion, MotionValue, spring, useMotionTemplate, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import {FaLinkedin, FaTwitter} from "react-icons/fa6";
 import MouseMagnetic from "@/app/ui_components/magnetic_mouse/MagneticMouse";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
+import Orb from "@/app/effects/Orb";
+import {compileNonPath} from "next/dist/shared/lib/router/utils/prepare-destination";
+import SectionTransition from "@/app/ui_components/home_components/home_sections/section_transition";
+import {useMotion} from "@react-three/drei";
 
 
 export default function ContactSection(): React.ReactElement {
@@ -25,50 +29,44 @@ export default function ContactSection(): React.ReactElement {
         offset: ["start 20%", "start start"]
     });
 
-    const emailYScale = useSpring(useTransform(scrollYProgress, [0, 1], [1000, 0]), springOptions);
-    const phoneYScale = useSpring(useTransform(scrollYProgress, [0.25, 1], [1000, 0]), springOptions);
+    const {scrollYProgress: reverseScrollProgress} = useScroll({
+        target: sectionRef,
+        offset: ["end end", "end 50%"]
+    })
+
+
+    const emailYScale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 1], [1000, 0]), springOptions);
+    const phoneYScale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0.25, 1], [1000, 0]), springOptions);
 
     const linkedInScale: MotionValue<number> = useSpring(useTransform(headingScrollProgress, [0, 1], [0, 1]), springOptions);
     const twitterScale: MotionValue<number> = useSpring(useTransform(headingScrollProgress, [0.25, 1], [0, 1]), springOptions);
 
+    const mouseInteractionScale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.9], [0, 1]), springOptions);
+
+    const sectionOpacity: MotionValue<number> = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
+    const sectionBlur: MotionValue<string> = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
+
     return (
         <React.Fragment>
             <motion.section
+                style={{opacity: sectionOpacity, filter: sectionBlur}}
                 ref={sectionRef}
-                className={`min-h-[100vh] h-screen relative overflow-y-visible bg-black flex `}>
-                <div className={`flex absolute w-screen h-screen top-[-100vh] pointer-events-none`}>
-                    {
-                        // [4,3,0,1,2]
-                        [0, 1, 2, 3, 4].map((item: number, index: number): React.ReactElement => {
-                            const rawScaleY: MotionValue<number> = useTransform(scrollYProgress, [Math.max((item) / 10, 0), 1], [0, 1]);
-                            const scaleY: MotionValue<number> = useSpring(rawScaleY, springOptions);
-                            return (
-                                <motion.div
-                                    style={{
-                                        scaleY,
-                                        transformOrigin: "bottom"
-                                    }}
-                                    key={index}
-                                    className={`h-screen flex-1 bg-black`}>
-                                </motion.div>
-                            )
-                        })
-                    }
-                </div>
+                className={`min-h-[100vh] h-screen relative overflow-y-visible flex bg-black overflow-x-hidden`}>
+                <SectionTransition scrollYProgress={scrollYProgress} color={"black"}/>
 
 
                 <div className={`flex-1 h-full flex flex-col overflow-hidden`}>
 
 
                     {/*MARK: Mouse Interaction*/}
-                    <div
-                        className={`flex-1/3 w-full overflow-hidden flex justify-center items-center !pr-[9vh]`}>
-                        <h1
-                            className={`text-[20rem] font-bold oswald text-white`}>
-                            U
-                        </h1>
-                    </div>
+                    <motion.div
+                        style={{scale: mouseInteractionScale}}
+                        className={`flex-1/3 w-full flex justify-center items-center !pr-[9vh]`}>
+                        <Orb forceHoverState={true}/>
+                    </motion.div>
 
+
+                    {/*MARK: Contact text-*/}
                     <div
                         ref={headingContainerRef}
                         className={`flex-1 w-full flex justify-start items-end`}>
@@ -76,7 +74,8 @@ export default function ContactSection(): React.ReactElement {
                             {
                                 "contact".split("").map((item: string, index: number): React.ReactElement => {
                                     const start: number = index / "contact".length;
-                                    const end: number = start + (1 / "contact".length);
+                                    let end: number = start + (1 / "contact".length);
+                                    if (index === 6) end -= 0.1;
                                     let y: MotionValue<number> = useSpring(useTransform(headingScrollProgress, [start, end], [200, 0]), springOptions);
                                     return (
                                         <motion.span

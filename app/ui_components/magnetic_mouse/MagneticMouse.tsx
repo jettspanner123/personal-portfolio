@@ -3,9 +3,10 @@ import {motion} from "framer-motion";
 
 interface MouseMagneticProps {
     children: React.ReactNode;
+    className?: string;
 }
 
-export default function MouseMagnetic({children}: MouseMagneticProps): React.JSX.Element {
+export default function MouseMagnetic({children, className}: MouseMagneticProps): React.JSX.Element {
 
     const [mousePosition, setMousePosition] = React.useState<{ x: number, y: number }>({x: 0, y: 0});
 
@@ -33,6 +34,7 @@ export default function MouseMagnetic({children}: MouseMagneticProps): React.JSX
             ref={elementRef}
             animate={{ x: mousePosition.x, y: mousePosition.y }}
             transition={{ mass: 3, stiffness: 20, duration: 0.4 }}
+            className={className ?? className}
         >
             {children}
         </motion.div>

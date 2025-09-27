@@ -13,7 +13,7 @@ export default function InitialLoader(): React.JSX.Element {
     })
     return (
         <React.Fragment>
-            <main className={`h-screen w-screen fixed top-0 left-0 flex`}>
+            <main className={`h-screen w-screen fixed top-0 left-0 flex pointer-events-none z-[11]`}>
                 {
                     [0.10, 0, 0.05, 0.15, 0.2].map((item: number, index: number): React.ReactElement => {
                         return (

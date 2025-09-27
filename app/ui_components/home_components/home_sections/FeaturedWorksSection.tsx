@@ -14,10 +14,9 @@ import SweatItLogo from "@/app/assets/Dumbbell.png";
 import MedfosysMockup from "@/app/assets/MedfosysMockup.png";
 import SweatItWebsiteMockup from "@/app/assets/SweatItWebsiteMockup.png";
 import MedfosysLogo from "@/app/assets/MedfosysIcon.png";
+import SectionTransition from "@/app/ui_components/home_components/home_sections/section_transition";
 
 export default function FeaturedWorksSection(): React.ReactElement {
-
-    const {toggleFor, mouseHoverState, mouseSize} = useMouseHoverState();
 
     const sectionRef: React.RefObject<HTMLElement | null> = React.useRef(null);
 
@@ -41,29 +40,11 @@ export default function FeaturedWorksSection(): React.ReactElement {
             <motion.section
                 style={{opacity: sectionOpacity, filter: sectionBlur}}
                 ref={sectionRef}
-                className={`min-h-screen relative w-screen bg-white overflow-y-visible !pb-[15rem]`}>
+                className={`min-h-screen relative w-screen bg-white overflow-y-visible !pb-[20rem] overflow-x-hidden`}>
 
 
                 {/*MARK: Scroll Section Change Interaction*/}
-                <div className={`flex absolute w-screen h-screen top-[-100vh]`}>
-                    {
-                        // [4,3,0,1,2]
-                        [0, 1, 2, 3, 4].map((item: number, index: number): React.ReactElement => {
-                            const rawScaleY: MotionValue<number> = useTransform(scrollYProgress, [Math.max((item) / 10, 0), 1], [0, 1]);
-                            const scaleY: MotionValue<number> = useSpring(rawScaleY, springOptions);
-                            return (
-                                <motion.div
-                                    style={{
-                                        scaleY,
-                                        transformOrigin: "bottom"
-                                    }}
-                                    key={index}
-                                    className={`h-screen flex-1 bg-white pointer-events-none`}>
-                                </motion.div>
-                            )
-                        })
-                    }
-                </div>
+                <SectionTransition scrollYProgress={scrollYProgress} color={"white"}/>
 
 
                 {/*MARK: Actual Section*/}

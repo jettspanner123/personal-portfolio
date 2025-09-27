@@ -31,6 +31,10 @@ body, html {
     backdrop-filter: blur(10px);
 }
 
+.blurBackground100 {
+    backdrop-filter: blur(100px);
+}
+
 .special_page_heading_background::before {
     content: "";
     width: 100%;

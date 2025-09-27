@@ -141,8 +141,8 @@ export default function SkillSetSection(): React.ReactElement {
                         index={9}
                     />
 
-
                 </div>
+
             </motion.section>
         </React.Fragment>
     )
@@ -164,7 +164,6 @@ function SkillCell({text, imageContent, index}: SkillCellInterface): React.React
 
 
     const isActive: boolean = currentSelectedImage === -1 || currentSelectedImage === index;
-    const border: string = index % 2 ? "border-[0.5px] border-l-0" : "border-[0.5px]";
     return (
         <motion.div
             layout

@@ -4,6 +4,7 @@ import {springOptions} from "@/app/constants/animation_constants";
 import Image, {StaticImageData} from "next/image";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 import {useHomePageState} from "@/app/stores/homepage_store";
+import ImageDistort from "@/app/effects/ImageDistort";
 
 interface ReverseProjectViewCardProps {
     heading: string;
@@ -79,11 +80,11 @@ export default function ReverseProjectViewCards({
                     style={{
                         // x: projectImagesScaleAnimation.firstProjectImage
                     }}
-                    className={`h-[85%] aspect-[16/9] relative`}>
+                    className={`h-[85%] relative`}>
 
                     {image && (
-                        <motion.div style={{y: imageTransform}}>
-                            <Image src={image} alt={""}/>
+                        <motion.div className={"relative h-[600px] w-[850px] aspect-video"} style={{y: imageTransform}}>
+                            <ImageDistort imageSrc={image.src} grid={10}/>
                         </motion.div>
                     )}
 

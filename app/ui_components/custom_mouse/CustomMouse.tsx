@@ -14,10 +14,19 @@ export default function CustomMouse(): React.ReactElement {
     const {mouseSize, mouseHoverState, showMouseHover} = useMouseHoverState();
 
     const [mousePosition, setMousePosition] = React.useState<{ x: number; y: number }>({x: 0, y: 0});
+    const [mouseOutOfView, setMouseOutOfView] = React.useState(false);
 
     React.useEffect((): () => void => {
         window.addEventListener("mousemove", (event: MouseEvent) => {
             setMousePosition({x: event.clientX - (mouseSize / 2), y: event.clientY - (mouseSize / 2)});
+        })
+
+        window.addEventListener("mouseleave", () => {
+            setMouseOutOfView(true);
+        })
+
+        window.addEventListener("mouseenter", () => {
+            setMouseOutOfView(false);
         })
 
         return () => window.removeEventListener("mousemove", () => {
@@ -26,7 +35,7 @@ export default function CustomMouse(): React.ReactElement {
     return (
         <motion.div
             animate={{
-                x: mousePosition.x, y: mousePosition.y, height: mouseSize, scale: showMouseHover ? 1 : 0
+                x: mousePosition.x, y: mousePosition.y, height: mouseSize, scale: showMouseHover ? 1 : 0, opacity: mouseOutOfView ? 0 : 1
             }}
             transition={{
                 ...springOptions,

@@ -7,10 +7,8 @@ import {StaticImageData} from "next/image";
 
 // MARK: Image imports
 import SweatItLogo from "@/app/assets/Dumbbell.png";
-import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 
 export default function ExperienceSection(): React.ReactElement {
-    const {toggleFor} = useMouseHoverState();
     const sectionRef = React.useRef<HTMLElement | null>(null);
     const accomplishmentHeadingRef = React.useRef<HTMLHeadingElement | null>(null);
 
@@ -37,7 +35,7 @@ export default function ExperienceSection(): React.ReactElement {
     interface AccomplishmentsProps {
         name: string;
         company_name: string;
-        hackation_name: string;
+        hackathon_name: string;
         date: string;
     }
 
@@ -45,25 +43,26 @@ export default function ExperienceSection(): React.ReactElement {
         {name: "Front End Developer", company_name: "Cantiliver Labs", duration: "2023", logo: SweatItLogo},
         {name: "Technical Head", company_name: "Geeks For Geeks", duration: "2023-2025", logo: SweatItLogo},
         {name: "Software Intern", company_name: "Infosys, Mysuru", duration: "2025", logo: SweatItLogo},
+        {name: "Front End Developer/UI UX Designer", company_name: "HelioWeb, Bikaner", duration: "June, 2025", logo: SweatItLogo},
     ];
 
     const accomplishments: Array<AccomplishmentsProps> = [
         {
             name: "Regionals Winner",
             company_name: "Geeks For Geeks",
-            hackation_name: "Solving For India Hackation",
+            hackathon_name: "Solving For India Hackathon",
             date: "March, 2023"
         },
         {
             name: "Larry Page UI Expert",
             company_name: "CodingNinjas",
-            hackation_name: "UI/UX Comp",
+            hackathon_name: "UI/UX Comp",
             date: "May, 2023"
         },
         {
             name: "Runner Up",
             company_name: "Geeks For Geeks",
-            hackation_name: "Solving For India Hackation",
+            hackathon_name: "Solving For India Hackathon",
             date: "September, 2024"
         },
     ];
@@ -72,7 +71,7 @@ export default function ExperienceSection(): React.ReactElement {
         <React.Fragment>
             <section
                 ref={sectionRef}
-                className={`min-h-screen h-screen bg-white w-screen flex `}>
+                className={`min-h-screen bg-white w-screen flex !pb-[5rem] overflow-x-hidden`}>
 
                 <div className={`h-full flex-1 !p-[7rem]`}>
 
@@ -149,7 +148,7 @@ export default function ExperienceSection(): React.ReactElement {
                                 </h1>
 
                                 <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>
-                                    {item.hackation_name}
+                                    {item.hackathon_name}
                                 </h1>
 
                                 <h1 className={`text-[1.75rem] geist text-light !py-[1.5rem] text-left flex-1`}>

@@ -7,6 +7,7 @@ import {springOptions} from "@/app/constants/animation_constants";
 import MyProfileImage from "@/app/assets/Me.jpeg";
 import Image from "next/image";
 import {useMouseHoverState} from "@/app/stores/mouse_store";
+import SectionTransition from "@/app/ui_components/home_components/home_sections/section_transition";
 
 
 export default function AboutSection(): React.ReactElement {
@@ -37,25 +38,7 @@ export default function AboutSection(): React.ReactElement {
                 className={`min-h-screen w-full bg-white relative`}
                 ref={sectionRef}>
 
-                <div className={`flex absolute w-screen h-screen top-[-100vh]`}>
-                    {
-                        // [4,3,0,1,2]
-                        [0, 1, 2, 3, 4].map((item: number, index: number): React.ReactElement => {
-                            const rawScaleY: MotionValue<number> = useTransform(scrollYProgress, [Math.max((item) / 10, 0), 1], [0, 1]);
-                            const scaleY: MotionValue<number> = useSpring(rawScaleY, springOptions);
-                            return (
-                                <motion.div
-                                    style={{
-                                        scaleY,
-                                        transformOrigin: "bottom"
-                                    }}
-                                    key={index}
-                                    className={`h-screen flex-1 bg-white pointer-events-none`}>
-                                </motion.div>
-                            )
-                        })
-                    }
-                </div>
+                <SectionTransition scrollYProgress={scrollYProgress} color={"white"} />
 
 
                 {/*MARK: Section header*/}
@@ -70,7 +53,7 @@ export default function AboutSection(): React.ReactElement {
                 </div>
 
 
-                <div className={`w-full !px-[7rem] !mx-auto h-screen !mt-[10rem] flex`}>
+                <div className={`w-full !px-[6rem] !mx-auto h-screen !mt-[10rem] flex`}>
 
                     <div className={`flex-1 h-full`}>
 

@@ -4,6 +4,7 @@ import {springOptions} from "@/app/constants/animation_constants";
 import Image, {StaticImageData} from "next/image";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 import {useHomePageState} from "@/app/stores/homepage_store";
+import ImageDistort from "@/app/effects/ImageDistort";
 
 interface ProjectViewCardProps {
     heading: string;
@@ -48,7 +49,6 @@ export default function ProjectViewCards({
     const {setPageChanging} = useHomePageState();
     return (
         <div
-
             ref={firstProjectRef}
             className={`w-full !px-[7rem] h-[35rem] flex justify-between items-center !mt-[15rem]`}>
             <div className={`flex-1 h-full flex flex-col`}>
@@ -83,14 +83,14 @@ export default function ProjectViewCards({
                 {/*MARK: Image container*/}
                 <motion.div
                     ref={imageRef}
-                    style={{
-                        // x: projectImagesScaleAnimation.firstProjectImage
-                    }}
-                    className={`h-[85%] aspect-[16/9] relative `}>
+                    className={`h-[85%] aspect-[16/9] relative`}>
 
                     {image && (
-                        <motion.div style={{y: imageTransform}}>
-                            <Image src={image} alt={""}/>
+                        <motion.div className={"relative h-[600px]"} style={{y: imageTransform}}>
+                            <ImageDistort
+                                grid={10}
+                                imageSrc={image.src}
+                            />
                         </motion.div>
                     )}
 
