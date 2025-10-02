@@ -111,7 +111,7 @@ export default function LandingSection(): React.JSX.Element {
                                     delay: 3.5,
                                     ease: [0.76, 0, 0.24, 1]
                                 }}
-                                className={"text-white border-[1px] border-white/50 font-light text-[1.3vw] geist !m-[2vw] !p-[1vw] blurBackground100 max-w-[47.8vw]"}>
+                                className={"text-white border-[1px] border-white/50 font-light text-[1.3vw] geist !m-[2vw] !p-[1vw] blurBackground100 max-w-[47.8vw] [@media(max-width:870px)]:max-w-[calc(100vw - 4vw)] [@media(max-width:870px)]:text-[2vw]"}>
                                 I’m a creative Full Stack Developer who blends design and logic to craft digital
                                 experiences that feel seamless, engaging, and alive.
                             </motion.p>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
+import {motion, MotionValue, useMotionTemplate, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import ProjectViewCards from "@/app/ui_components/home_components/home_sections/project_view_card";
 import ReverseProjectViewCards from "@/app/ui_components/home_components/home_sections/reverse_project_view_card";
@@ -31,8 +31,9 @@ export default function FeaturedWorksSection(): React.ReactElement {
     })
 
 
-    const headingUnderlineWidth = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
-    const sectionOpacity = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
+    const headingUnderlineWidthRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, 100]), springOptions);
+    const headingUnderlineWidth: MotionValue<string> = useMotionTemplate`${headingUnderlineWidthRaw}%`;
+    const sectionOpacity: MotionValue<number> = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
     const sectionBlur = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
 
     return (

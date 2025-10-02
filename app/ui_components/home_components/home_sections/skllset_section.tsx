@@ -1,6 +1,14 @@
 "use client";
 import React from "react";
-import {AnimatePresence, motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
+import {
+    AnimatePresence,
+    motion,
+    MotionValue,
+    useMotionTemplate,
+    useScroll,
+    useSpring,
+    useTransform
+} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import Image from "next/image";
 import {ApplicationColor} from "@/app/constants/ui_constants";
@@ -29,7 +37,8 @@ export default function SkillSetSection(): React.ReactElement {
     })
 
 
-    const headingUnderlineScaleX: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
+    const headingUnderlineWidthRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, 100]), springOptions);
+    const headingUnderlineWidth: MotionValue<string> = useMotionTemplate`${headingUnderlineWidthRaw}%`;
 
 
     const {scrollYProgress: reverseScrollProgress} = useScroll({
@@ -51,7 +60,7 @@ export default function SkillSetSection(): React.ReactElement {
                     <h1 className={`text-[4rem] inline-block`}>
                         My SkillSet
                         <motion.div
-                            style={{scaleX: headingUnderlineScaleX, transformOrigin: "left"}}
+                            style={{scaleX: headingUnderlineWidth, transformOrigin: "left"}}
                             className={`h-[10px] w-full bg-black rounded-full`}/>
                     </h1>
                 </div>

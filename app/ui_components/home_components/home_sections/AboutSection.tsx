@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
+import {motion, MotionValue, useMotionTemplate, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 
 // MARK: Image imports
@@ -22,7 +22,8 @@ export default function AboutSection(): React.ReactElement {
 
     const imageScale = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
 
-    const headingUnderlineWidth = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
+    const headingUnderlineWidthRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, 100]), springOptions);
+    const headingUnderlineWidth: MotionValue<string> = useMotionTemplate`${headingUnderlineWidthRaw}%`;
 
     const aboutMeContent: string = "For over 2 years I have been striving to create bold experiences that connect brands with their audience through design that resonates.";
     const aboutMeSubContent: string = "Specializing in digital design, motion design. I strive to give each project a unique personality and visual design."

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {motion, MotionValue, useScroll, useSpring, useTransform} from "framer-motion";
+import {motion, MotionValue, useMotionTemplate, useScroll, useSpring, useTransform} from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import SectionTransition from "@/app/ui_components/home_components/home_sections/section_transition";
 
@@ -13,7 +13,8 @@ export default function TechStackSection(): React.ReactElement {
         offset: ["start end", "start start"]
     });
 
-    const headingUnderlineWidth: MotionValue<string> = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
+    const headingUnderlineWidthRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, 100]), springOptions);
+    const headingUnderlineWidth: MotionValue<string> = useMotionTemplate`${headingUnderlineWidthRaw}%`;
 
     const {scrollYProgress: reverseScrollProgress} = useScroll({
         target: sectionRef,

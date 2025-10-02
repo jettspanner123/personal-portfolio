@@ -51,7 +51,7 @@ export default function ContactSection(): React.ReactElement {
             <motion.section
                 style={{opacity: sectionOpacity, filter: sectionBlur}}
                 ref={sectionRef}
-                className={`min-h-[100vh] h-screen relative overflow-y-visible flex bg-black overflow-x-hidden`}>
+                className={`min-h-[100vh] h-screen relative flex bg-black`}>
                 <SectionTransition scrollYProgress={scrollYProgress} color={"black"}/>
 
 
