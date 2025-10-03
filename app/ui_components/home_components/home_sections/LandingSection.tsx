@@ -3,6 +3,8 @@ import React from "react";
 import {motion, MotionValue, useMotionTemplate, useScroll, useSpring, useTransform} from "framer-motion";
 import LiquidChrome from "@/app/effects/LiquidChrome";
 import {springOptions} from "@/app/constants/animation_constants";
+import {apply} from "@tailwindcss/postcss";
+import {BiLinkExternal} from "react-icons/bi";
 
 export interface NavbarPages {
     name: string;
@@ -13,6 +15,14 @@ export const navbarPages: Array<NavbarPages> = [
     {name: "Works"},
     {name: "About"},
     {name: "Contact"}
+];
+
+const skills: Array<string> = [
+    "Web Apps",
+    "IOS Apps",
+    "Desktop Dev",
+    "UI/UX Design",
+    "Graphics Designer"
 ];
 
 export default function LandingSection(): React.JSX.Element {
@@ -27,6 +37,8 @@ export default function LandingSection(): React.JSX.Element {
 
     // MARK: True animation values
     const descriptionScrollTransformX: MotionValue<string> = useMotionTemplate`${descriptionScrollTransformXRaw}vw`;
+    const skillsScrollTransformScale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.02], [1, 0]), springOptions);
+
 
     return (
         <React.Fragment>
@@ -87,8 +99,10 @@ export default function LandingSection(): React.JSX.Element {
                                                 color: index === 0 ? "black" : "white"
                                             }}
                                             key={index}
-                                            className={`text-white pointer-events-auto !p-[0.5rem] flex-1 text-center ${index !== 0 ? "border-l-[1px] border-white/50" : ""} blurBackground100`}>
+                                            className={`text-white pointer-events-auto !p-[0.5rem] flex-1 text-center ${index !== 0 ? "border-l-[1px] border-white/50" : ""} blurBackground100 relative`}>
                                             {page.name}
+
+                                            <BiLinkExternal className={"absolute top-1/2 -translate-y-1/2 right-2"}/>
                                         </motion.p>
                                     )
                                 })
@@ -116,6 +130,35 @@ export default function LandingSection(): React.JSX.Element {
                                 experiences that feel seamless, engaging, and alive.
                             </motion.p>
                         </motion.span>
+
+                        <motion.div
+                            style={{ scale: skillsScrollTransformScale}}
+                            animate={{
+                                x: 0
+                            }}
+                            initial={{
+                                x: "-30vw"
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                ease: [0.76, 0, 0.24, 1],
+                                delay: 3.75
+                            }}
+                            className={`!mx-[2vw] w-fit blurBackground100 origin-bottom-left`}>
+                            {
+                                skills.map((item: string, index: number): React.JSX.Element => {
+                                    return (
+                                        <motion.p
+
+                                            key={`skills-${index}`}
+                                            className={"text-white w-[23.5vw] border-[1px] border-white/50 font-light text-[1.3vw] geist !p-[1vw]"}
+                                        >
+                                            {item}
+                                        </motion.p>
+                                    )
+                                })
+                            }
+                        </motion.div>
                     </section>
 
                 </motion.div>
