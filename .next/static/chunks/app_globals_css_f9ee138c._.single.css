@@ -396,10 +396,6 @@
     margin-inline: auto !important;
   }
 
-  .\!my-\[2vw\] {
-    margin-block: 2vw !important;
-  }
-
   .\!mt-\[1vh\] {
     margin-top: 1vh !important;
   }
@@ -450,10 +446,6 @@
 
   .grid {
     display: grid;
-  }
-
-  .inline {
-    display: inline;
   }
 
   .inline-block {

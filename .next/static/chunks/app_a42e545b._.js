@@ -308,15 +308,23 @@ function LandingSection() {
         0,
         52 * -1
     ]), __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$constants$2f$animation_constants$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["springOptions"]);
-    // MARK: True animation values
-    const descriptionScrollTransformX = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$motion$2d$template$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionTemplate"]`${descriptionScrollTransformXRaw}vw`;
-    const skillsScrollTransformScale = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$transform$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransform"])(scrollYProgress, [
+    const skillsScrollTransformScaleRaw = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$transform$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransform"])(scrollYProgress, [
         0,
         0.02
     ], [
         1,
         0
     ]), __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$constants$2f$animation_constants$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["springOptions"]);
+    const skillsScrollTransformXRaw = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$transform$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransform"])(scrollYProgress, [
+        0,
+        0.02
+    ], [
+        0,
+        -30
+    ]), __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$constants$2f$animation_constants$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["springOptions"]);
+    // MARK: True animation values
+    const descriptionScrollTransformX = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$motion$2d$template$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionTemplate"]`${descriptionScrollTransformXRaw}vw`;
+    const skillsScrollTransformScale = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$motion$2d$template$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionTemplate"]`translateX(${skillsScrollTransformXRaw}vw) scale(${skillsScrollTransformScaleRaw})`;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].Fragment, {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
             className: "w-screen h-screen relative",
@@ -352,7 +360,7 @@ function LandingSection() {
                         interactive: true
                     }, void 0, false, {
                         fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                        lineNumber: 61,
+                        lineNumber: 62,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -394,19 +402,19 @@ function LandingSection() {
                                                 className: "absolute top-1/2 -translate-y-1/2 right-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                                lineNumber: 105,
+                                                lineNumber: 106,
                                                 columnNumber: 45
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                        lineNumber: 91,
+                                        lineNumber: 92,
                                         columnNumber: 41
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                lineNumber: 75,
+                                lineNumber: 76,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].span, {
@@ -435,24 +443,24 @@ function LandingSection() {
                                     children: "I’m a creative Full Stack Developer who blends design and logic to craft digital experiences that feel seamless, engaging, and alive."
                                 }, void 0, false, {
                                     fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 117,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                lineNumber: 113,
+                                lineNumber: 114,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                style: {
-                                    scale: skillsScrollTransformScale
-                                },
                                 animate: {
-                                    x: 0
+                                    x: 0,
+                                    rotate: 0
                                 },
                                 initial: {
-                                    x: "-30vw"
+                                    x: "-30vw",
+                                    rotate: "-15deg"
                                 },
+                                className: "origin-bottom-left",
                                 transition: {
                                     duration: 1.5,
                                     ease: [
@@ -463,48 +471,74 @@ function LandingSection() {
                                     ],
                                     delay: 3.75
                                 },
-                                className: `!mx-[2vw] w-fit blurBackground100 origin-bottom-left`,
-                                children: skills.map((item, index)=>{
-                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
-                                        className: "text-white w-[23.5vw] border-[1px] border-white/50 font-light text-[1.3vw] geist !p-[1vw]",
-                                        children: item
-                                    }, `skills-${index}`, false, {
-                                        fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                        lineNumber: 151,
-                                        columnNumber: 41
-                                    }, this);
-                                })
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                    style: {
+                                        transform: skillsScrollTransformScale
+                                    },
+                                    animate: {
+                                        x: 0
+                                    },
+                                    initial: {
+                                        x: "-30vw"
+                                    },
+                                    transition: {
+                                        duration: 1.5,
+                                        ease: [
+                                            0.76,
+                                            0,
+                                            0.24,
+                                            1
+                                        ],
+                                        delay: 3.75
+                                    },
+                                    className: `!mx-[2vw] w-fit blurBackground100 origin-bottom-left`,
+                                    children: skills.map((item, index)=>{
+                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
+                                            className: "text-white w-[23.5vw] border-[1px] border-white/50 font-light text-[1.3vw] geist !p-[1vw]",
+                                            children: item
+                                        }, `skills-${index}`, false, {
+                                            fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
+                                            lineNumber: 167,
+                                            columnNumber: 45
+                                        }, this);
+                                    })
+                                }, void 0, false, {
+                                    fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
+                                    lineNumber: 150,
+                                    columnNumber: 29
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                                lineNumber: 134,
+                                lineNumber: 135,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                        lineNumber: 70,
+                        lineNumber: 71,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-                lineNumber: 46,
+                lineNumber: 47,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-            lineNumber: 45,
+            lineNumber: 46,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/ui_components/home_components/home_sections/LandingSection.tsx",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 9
     }, this);
 }
-_s(LandingSection, "mmJRy3389B/tWWdv/mrTWjuPBH0=", false, function() {
+_s(LandingSection, "xEBj7XAcsT1aGxGLPmh6uKIGLXc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$scroll$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScroll"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"]
     ];

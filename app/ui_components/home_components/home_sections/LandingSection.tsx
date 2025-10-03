@@ -3,7 +3,6 @@ import React from "react";
 import {motion, MotionValue, useMotionTemplate, useScroll, useSpring, useTransform} from "framer-motion";
 import LiquidChrome from "@/app/effects/LiquidChrome";
 import {springOptions} from "@/app/constants/animation_constants";
-import {apply} from "@tailwindcss/postcss";
 import {BiLinkExternal} from "react-icons/bi";
 
 export interface NavbarPages {
@@ -34,10 +33,12 @@ export default function LandingSection(): React.JSX.Element {
 
     // MARK: Raw values
     const descriptionScrollTransformXRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.01], [0, 52 * -1]), springOptions);
+    const skillsScrollTransformScaleRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.02], [1, 0]), springOptions);
+    const skillsScrollTransformXRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.02], [0, -30]), springOptions);
 
     // MARK: True animation values
     const descriptionScrollTransformX: MotionValue<string> = useMotionTemplate`${descriptionScrollTransformXRaw}vw`;
-    const skillsScrollTransformScale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.02], [1, 0]), springOptions);
+    const skillsScrollTransformScale: MotionValue<string> = useMotionTemplate`translateX(${skillsScrollTransformXRaw}vw) scale(${skillsScrollTransformScaleRaw})`;
 
 
     return (
@@ -132,32 +133,48 @@ export default function LandingSection(): React.JSX.Element {
                         </motion.span>
 
                         <motion.div
-                            style={{ scale: skillsScrollTransformScale}}
                             animate={{
-                                x: 0
+                                x: 0,
+                                rotate: 0
                             }}
                             initial={{
-                                x: "-30vw"
+                                x: "-30vw",
+                                rotate: "-15deg"
                             }}
+                            className={"origin-bottom-left"}
                             transition={{
                                 duration: 1.5,
                                 ease: [0.76, 0, 0.24, 1],
                                 delay: 3.75
-                            }}
-                            className={`!mx-[2vw] w-fit blurBackground100 origin-bottom-left`}>
-                            {
-                                skills.map((item: string, index: number): React.JSX.Element => {
-                                    return (
-                                        <motion.p
+                            }}>
+                            <motion.div
+                                style={{transform: skillsScrollTransformScale}}
+                                animate={{
+                                    x: 0
+                                }}
+                                initial={{
+                                    x: "-30vw"
+                                }}
+                                transition={{
+                                    duration: 1.5,
+                                    ease: [0.76, 0, 0.24, 1],
+                                    delay: 3.75
+                                }}
+                                className={`!mx-[2vw] w-fit blurBackground100 origin-bottom-left`}>
+                                {
+                                    skills.map((item: string, index: number): React.JSX.Element => {
+                                        return (
+                                            <motion.p
 
-                                            key={`skills-${index}`}
-                                            className={"text-white w-[23.5vw] border-[1px] border-white/50 font-light text-[1.3vw] geist !p-[1vw]"}
-                                        >
-                                            {item}
-                                        </motion.p>
-                                    )
-                                })
-                            }
+                                                key={`skills-${index}`}
+                                                className={"text-white w-[23.5vw] border-[1px] border-white/50 font-light text-[1.3vw] geist !p-[1vw]"}
+                                            >
+                                                {item}
+                                            </motion.p>
+                                        )
+                                    })
+                                }
+                            </motion.div>
                         </motion.div>
                     </section>
 
