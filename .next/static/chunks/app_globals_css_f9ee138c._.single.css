@@ -300,14 +300,6 @@
     top: 5rem;
   }
 
-  .top-\[7rem\] {
-    top: 7rem;
-  }
-
-  .top-\[15rem\] {
-    top: 15rem;
-  }
-
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
@@ -510,20 +502,8 @@
     height: 35rem;
   }
 
-  .h-\[50vh\] {
-    height: 50vh;
-  }
-
-  .h-\[50vw\] {
-    height: 50vw;
-  }
-
   .h-\[85\%\] {
     height: 85%;
-  }
-
-  .h-\[200vh\] {
-    height: 200vh;
   }
 
   .h-\[500vh\] {
@@ -532,18 +512,6 @@
 
   .h-\[600px\] {
     height: 600px;
-  }
-
-  .h-\[calc\(100vh-7rem\)\] {
-    height: calc(100vh - 7rem);
-  }
-
-  .h-\[calc\(100vh-15rem\)\] {
-    height: calc(100vh - 15rem);
-  }
-
-  .h-\[calc\(100vh-25rem\)\] {
-    height: calc(100vh - 25rem);
   }
 
   .h-full {
@@ -787,16 +755,6 @@
 
   .bg-blue-300 {
     background-color: var(--color-blue-300);
-  }
-
-  .bg-blue-300\/10 {
-    background-color: #90c5ff1a;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-blue-300\/10 {
-      background-color: color-mix(in oklab, var(--color-blue-300) 10%, transparent);
-    }
   }
 
   .bg-green-300 {
