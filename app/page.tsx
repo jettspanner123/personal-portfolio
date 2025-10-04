@@ -78,7 +78,7 @@ export default function Home(): React.JSX.Element {
             {/*MARK: Top Navbar heading*/}
             <motion.h1
                 style={{fontSize: headingSize, top: headingTopPosition, left: headingLeftPosition}}
-                className={"text-white z-[12] overflow-hidden w-full flex justify-start items-center pointer-events-none mix-blend-difference font-bold oswald text-center fixed leading-none text-nowrap uppercase"}>
+                className={"text-white z-[14] overflow-hidden w-full flex justify-start items-center pointer-events-none mix-blend-difference font-bold oswald text-center fixed leading-none text-nowrap uppercase"}>
                 {
                     "uddeshya".split("").map((item: string, index: number): React.JSX.Element => {
                         return (

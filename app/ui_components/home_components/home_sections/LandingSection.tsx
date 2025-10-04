@@ -85,7 +85,7 @@ export default function LandingSection(): React.JSX.Element {
                                 delay: 3.5,
                                 ease: [0.83, 0, 0.17, 1]
                             }}
-                            className={"flex justify-between border-[1px] border-white/50 items-center !mx-[2vw]"}>
+                            className={"flex blurBackground100 justify-between border-[1px] border-white/50 items-center !mx-[2vw]"}>
                             {
                                 navbarPages.map((page: NavbarPages, index: number): React.JSX.Element => {
                                     return (
@@ -100,7 +100,7 @@ export default function LandingSection(): React.JSX.Element {
                                                 color: index === 0 ? "black" : "white"
                                             }}
                                             key={index}
-                                            className={`text-white pointer-events-auto !p-[0.5rem] flex-1 text-center ${index !== 0 ? "border-l-[1px] border-white/50" : ""} blurBackground100 relative`}>
+                                            className={`text-white pointer-events-auto !p-[0.5rem] flex-1 text-center ${index !== 0 ? "border-l-[1px] border-white/50" : ""} relative`}>
                                             {page.name}
 
                                             <BiLinkExternal className={"absolute top-1/2 -translate-y-1/2 right-2"}/>

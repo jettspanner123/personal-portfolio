@@ -42,10 +42,30 @@ export default function ExperienceSection(): React.ReactElement {
 
 
     const experiences: Array<ExperienceProps> = [
-        {name: "Front End Developer", company_name: "Cantiliver Labs", duration: "2023", logo: SweatItLogo},
-        {name: "Technical Head", company_name: "Geeks For Geeks", duration: "2023-2025", logo: SweatItLogo},
-        {name: "Software Intern", company_name: "Infosys, Mysuru", duration: "2025", logo: SweatItLogo},
-        {name: "Front End/UI UX", company_name: "HelioWeb, Bikaner", duration: "June, 2025", logo: SweatItLogo},
+        {
+            name: "Front End Developer",
+            company_name: "Cantiliver Labs",
+            duration: "December, 2023",
+            logo: SweatItLogo
+        },
+        {
+            name: "Technical Head",
+            company_name: "Geeks For Geeks",
+            duration: "2023-2025",
+            logo: SweatItLogo
+        },
+        {
+            name: "Software Intern",
+            company_name: "Infosys, Mysuru",
+            duration: "February, 2025",
+            logo: SweatItLogo
+        },
+        {
+            name: "Front End/UI UX",
+            company_name: "HelioWeb, Bikaner",
+            duration: "June, 2025",
+            logo: SweatItLogo
+        },
     ];
 
     const accomplishments: Array<AccomplishmentsProps> = [
@@ -99,7 +119,7 @@ export default function ExperienceSection(): React.ReactElement {
                         </h1>
 
                         <h1 className={`text-[1.5rem] oswald flex-1 text-end justify-start`}>
-                            Duration
+                            Timestamp
                         </h1>
                     </div>
 
