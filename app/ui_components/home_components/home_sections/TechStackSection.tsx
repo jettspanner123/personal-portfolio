@@ -33,7 +33,7 @@ export default function TechStackSection(): React.ReactElement {
     const sectionOpacity: MotionValue<number> = useSpring(useTransform(reverseScrollProgress, [0, 1], [1, 0.5]), springOptions);
     const sectionBlur: MotionValue<string> = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
 
-    const description: string = "I specialize in creating modern, user-focused digital experiences across web, iOS, desktop, and cross-platform applications, combining frontend, backend, and UI/UX expertise to build seamless, functional, and engaging products.";
+    const description: string = "I specialize in creating modern, user-focused digital experiences across web, iOS, desktop, and cross-platform applications, combining frontend, backend, and UI/UX expertise to build seamless, functional, and engaging products that inspire and perform beautifully.";
     const descriptionRef: React.RefObject<HTMLParagraphElement | null> = React.useRef(null);
 
     const {scrollYProgress: descriptionScrollYProgress} = useScroll({

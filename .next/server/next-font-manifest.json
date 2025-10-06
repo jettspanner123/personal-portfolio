@@ -1,16 +1,10 @@
 {
   "app": {
-    "[project]/app/_not-found/page": [
-      "static/media/ieVl2ZhZI2eCN5jzbjEETS9weq8_19K7DQk6YvM-s.p.0b486f2d.woff2",
-      "static/media/TK3iWkUHHAIjg752GT8Gl_1PKw-s.p.0633c0cf.woff2",
-      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.1a6fa3e1.woff2",
-      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2"
-    ],
     "[project]/app/page": [
-      "static/media/ieVl2ZhZI2eCN5jzbjEETS9weq8_19K7DQk6YvM-s.p.0b486f2d.woff2",
-      "static/media/TK3iWkUHHAIjg752GT8Gl_1PKw-s.p.0633c0cf.woff2",
       "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.1a6fa3e1.woff2",
-      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2"
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/TK3iWkUHHAIjg752GT8Gl_1PKw-s.p.0633c0cf.woff2",
+      "static/media/ieVl2ZhZI2eCN5jzbjEETS9weq8_19K7DQk6YvM-s.p.0b486f2d.woff2"
     ]
   },
   "appUsingSizeAdjust": true,
