@@ -78,7 +78,7 @@ export default function Home(): React.JSX.Element {
             {/*MARK: Top Navbar heading*/}
             <motion.h1
                 style={{fontSize: headingSize, top: headingTopPosition, left: headingLeftPosition}}
-                className={"text-white z-[14] overflow-hidden w-full flex justify-start items-center pointer-events-none mix-blend-difference font-bold oswald text-center fixed leading-none text-nowrap uppercase"}>
+                className={"text-white z-[1000] overflow-hidden w-full flex justify-start items-center pointer-events-none mix-blend-difference font-bold oswald text-center fixed leading-none text-nowrap uppercase"}>
                 {
                     "uddeshya".split("").map((item: string, index: number): React.JSX.Element => {
                         return (
@@ -126,7 +126,7 @@ export default function Home(): React.JSX.Element {
                         delay: 0.5
                     }
                 }}
-                className={`h-[8vh] aspect-square rounded-full border-[0.5px] border-white/50 z-[13] fixed  right-[6.2vw] top-[2.5vh] flex justify-center items-center`}>
+                className={`h-[8vh] aspect-square rounded-full border-[0.5px] border-white/50 z-[1000] fixed  right-[6.2vw] top-[2.5vh] flex justify-center items-center`}>
 
                 <AnimatePresence mode={"wait"}>
                     {!isFullScreenNavbarOpen ? (
