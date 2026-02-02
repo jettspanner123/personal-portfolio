@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
+
 * {
     padding: 0;
     margin: 0;
@@ -27,6 +28,11 @@ body, html {
 }
 
 
+@theme {
+    --breakpoint-midscr: 1400px;
+}
+
+
 .blurBackground {
     backdrop-filter: blur(10px);
 }
@@ -44,4 +50,5 @@ body, html {
     filter: blur(100px);
     backdrop-filter: blur(10px);
 }
+
 

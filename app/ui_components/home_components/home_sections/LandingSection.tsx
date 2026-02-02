@@ -4,6 +4,7 @@ import {motion, MotionValue, useMotionTemplate, useScroll, useSpring, useTransfo
 import LiquidChrome from "@/app/effects/LiquidChrome";
 import {springOptions} from "@/app/constants/animation_constants";
 import {BiLinkExternal} from "react-icons/bi";
+import SectionTransition from "@/app/ui_components/home_components/home_sections/components/section_transition";
 
 export interface NavbarPages {
     name: string;
@@ -69,7 +70,9 @@ export default function LandingSection(): React.JSX.Element {
 
                     {/*MARK: Actual content screen*/}
                     <section
-                        className={"w-screen h-screen absolute top-0 z-[10] bg-black/50 !pt-[22.5vw] pointer-events-none"}>
+                        className={"w-screen h-screen absolute top-0 z-[10] !pt-[22.5vw] pointer-events-none"}>
+
+                        <SectionTransition scrollYProgress={scrollYProgress} color={"white"}/>
 
 
                         {/*MARK: Navigation button*/}
@@ -126,7 +129,7 @@ export default function LandingSection(): React.JSX.Element {
                                     delay: 3.5,
                                     ease: [0.76, 0, 0.24, 1]
                                 }}
-                                className={"text-white border-[1px] border-white/50 font-light text-[1.3vw] geist !m-[2vw] !p-[1vw] blurBackground100 max-w-[47.8vw] [@media(max-width:870px)]:max-w-[calc(100vw - 4vw)] [@media(max-width:870px)]:text-[2vw]"}>
+                                className={"text-white border-[1px] border-white/50 font-light text-[1.3vw] geist !m-[2vw] !p-[1vw] blurBackground100 w-[calc(100vw-4rem)] midscr:w-[50vw]  "}>
                                 I’m a creative Full Stack Developer who blends design and logic to craft digital
                                 experiences that feel seamless, engaging, and alive.
                             </motion.p>

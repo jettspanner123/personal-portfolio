@@ -24,12 +24,9 @@ import {
 } from "framer-motion";
 import TechStackSection from "@/app/ui_components/home_components/home_sections/TechStackSection";
 import {springOptions} from "@/app/constants/animation_constants";
-import LightRays from "@/app/effects/LightRays";
 import {RxCross1} from "react-icons/rx";
 import {CiMenuBurger} from "react-icons/ci";
 import {useMouseHoverState} from "@/app/stores/mouse_store";
-import Image from "next/image";
-import NavbarImage from "../app/assets/navbar_picture.jpg";
 
 
 // MARK: Image import
@@ -163,11 +160,6 @@ export default function Home(): React.JSX.Element {
                 </AnimatePresence>
             </motion.div>
 
-            <FullScreenMenu
-                isShow={isFullScreenNavbarOpen}
-                setShow={setIsFullScreenNavbarOpen}
-            />
-
             <motion.main
                 className={`w-screen relative min-h-screen bg-[#0E0E0E] origin-bottom-left`}>
                 {/*MARK: Page change animation*/}
@@ -238,150 +230,4 @@ export default function Home(): React.JSX.Element {
             </motion.main>
         </React.Fragment>
     );
-}
-
-
-function FullScreenMenu({isShow, setShow}: {
-    isShow: boolean,
-    setShow: React.Dispatch<React.SetStateAction<boolean>>
-}): React.JSX.Element {
-    return (
-        <React.Fragment>
-            <motion.nav
-                initial={{
-                    clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-                }}
-                animate={{
-                    clipPath: isShow ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" : "polygon(0 0, 100% 0, 100% 0, 0 0)",
-                }}
-                transition={{
-                    duration: 1.1,
-                    ease: [0.65, 0, 0.35, 1],
-                }}
-                className={"bg-[#0E0E0E] h-screen w-screen fixed top-0 z-[11] overflow-hidden flex"}>
-
-                <motion.section
-                    animate={{y: isShow ? "0vh" : "100vh"}}
-                    transition={{
-                        duration: 1.1,
-                        ease: [0.65, 0, 0.35, 1],
-
-                    }}
-                    className={"flex-1 h-full flex justify-end items-center"}>
-                    <Image src={NavbarImage} height={300} width={100} alt={""} className={"h-[70%] w-[50%]"}/>
-                </motion.section>
-
-                <section className={"flex-1 h-full flex justify-center items-start flex-col"}>
-                    <div>
-                        {
-                            navbarPages.map((item: NavbarPages, index: number): React.JSX.Element => {
-                                return (
-                                    <NavbarLinks key={index} item={item} index={index} isOpen={isShow}
-                                                 setOpen={setShow}/>
-                                )
-                            })
-                        }
-                    </div>
-
-
-                </section>
-
-            </motion.nav>
-
-
-            <motion.div
-                initial={{
-                    opacity: 0,
-
-                }}
-                animate={{
-                    opacity: isShow ? 1 : 0
-                }}
-                transition={{
-                    duration: .5,
-                    delay: isShow ? 0.9 : 0.25
-                }}
-                className={"h-screen w-screen z-[12] fixed pointer-events-none"}>
-                <LightRays
-                    raysOrigin="top-center"
-                    raysColor="#ffffff"
-                    raysSpeed={1}
-                    lightSpread={3}
-                    rayLength={2}
-                    followMouse={true}
-                    mouseInfluence={0.15}
-                    noiseAmount={0.1}
-                    distortion={0.05}
-                    className="custom-rays"
-                />
-            </motion.div>
-        </React.Fragment>
-
-    );
-}
-
-function NavbarLinks({
-                         item, index, isOpen, setOpen
-                     }: {
-    item: NavbarPages,
-    index
-        :
-        number;
-    isOpen: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
-
-    const [isHover, setHover] = React.useState(false);
-
-    function clickFunction(): void {
-        setOpen(false);
-    }
-
-    return (
-        <motion.div
-            animate={{
-                y: isOpen ? 0 : "-100vh"
-            }}
-            transition={{
-                duration: 1,
-                delay: isOpen ? 0.3 + ((navbarPages.length - index) * 0.1) : (index * 0.1),
-                ease: [0.65, 0, 0.35, 1]
-            }}
-            whileHover={{
-                cursor: "pointer"
-            }}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onClick={clickFunction}
-            className={"w-full !px-[5rem]"}
-        >
-            <motion.h1
-                className={`text-white hover:bg-white hover:text-black font-bold oswald uppercase text-[5vw] leading-[5vw] relative !px-[2vw] text-left overflow-hidden transition-all duration-400`}>
-                <motion.span
-                    animate={{
-                        y: isHover ? -200 : 0
-                    }}
-                    transition={{
-                        duration: .35,
-                        ease: [0.65, 0, 0.35, 1]
-                    }}
-                    className={"inline-block"}
-                >
-                    {item.name}
-                </motion.span>
-
-                <motion.p
-                    animate={{
-                        top: isHover ? 0 : "100%"
-                    }}
-                    transition={{
-                        duration: .35,
-                        ease: [0.65, 0, 0.35, 1]
-                    }}
-                    className={"absolute"}>
-                    {item.name}
-                </motion.p>
-            </motion.h1>
-        </motion.div>
-    )
 }

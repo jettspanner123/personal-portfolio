@@ -62,7 +62,6 @@ export default function ContactSection(): React.ReactElement {
                     <motion.div
                         style={{scale: mouseInteractionScale}}
                         className={`flex-1/3 w-full flex justify-center items-center !pr-[9vh]`}>
-                        <Orb forceHoverState={true}/>
                     </motion.div>
 
 
