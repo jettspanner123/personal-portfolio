@@ -940,20 +940,8 @@
     width: 80%;
   }
 
-  .w-\[100vw\] {
-    width: 100vw;
-  }
-
   .w-\[850px\] {
     width: 850px;
-  }
-
-  .w-\[calc\(100vw-2rem\)\] {
-    width: calc(100vw - 2rem);
-  }
-
-  .w-\[calc\(100vw-3rem\)\] {
-    width: calc(100vw - 3rem);
   }
 
   .w-\[calc\(100vw-4rem\)\] {
@@ -970,10 +958,6 @@
 
   .w-screen {
     width: 100vw;
-  }
-
-  .max-w-\[47\.8vw\] {
-    max-width: 47.8vw;
   }
 
   .min-w-screen {
@@ -1200,14 +1184,6 @@
     padding-inline: 2rem !important;
   }
 
-  .\!px-\[2vw\] {
-    padding-inline: 2vw !important;
-  }
-
-  .\!px-\[5rem\] {
-    padding-inline: 5rem !important;
-  }
-
   .\!px-\[6rem\] {
     padding-inline: 6rem !important;
   }
@@ -1312,17 +1288,8 @@
     font-size: 5rem;
   }
 
-  .text-\[5vw\] {
-    font-size: 5vw;
-  }
-
   .text-\[12rem\] {
     font-size: 12rem;
-  }
-
-  .leading-\[5vw\] {
-    --tw-leading: 5vw;
-    line-height: 5vw;
   }
 
   .leading-none {
@@ -1399,12 +1366,6 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 
-  .transition-all {
-    transition-property: all;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
-
   .transition-colors {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -1414,11 +1375,6 @@
   .duration-300 {
     --tw-duration: .3s;
     transition-duration: .3s;
-  }
-
-  .duration-400 {
-    --tw-duration: .4s;
-    transition-duration: .4s;
   }
 
   @media (hover: hover) {
@@ -1434,18 +1390,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-white:hover {
-      background-color: var(--color-white);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:text-black:hover {
-      color: var(--color-black);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:text-white:hover {
       color: var(--color-white);
     }
@@ -1454,30 +1398,6 @@
   @media (width >= 1400px) {
     .midscr\:w-\[50vw\] {
       width: 50vw;
-    }
-  }
-
-  @media (width >= 1400px) {
-    .midscr\:w-full {
-      width: 100%;
-    }
-  }
-
-  @media (width >= 1400px) {
-    .midscr\:max-w-\[50vw\] {
-      max-width: 50vw;
-    }
-  }
-
-  @media (width >= 1400px) {
-    .midscr\:bg-blue-300 {
-      background-color: var(--color-blue-300);
-    }
-  }
-
-  @media (width <= 870px) {
-    .\[\@media\(max-width\:870px\)\]\:text-\[2vw\] {
-      font-size: 2vw;
     }
   }
 }
@@ -1513,7 +1433,7 @@ body, html {
 }
 
 .blurBackground100 {
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(50px);
 }
 
 .special_page_heading_background:before {

@@ -34,7 +34,7 @@ export default function FeaturedWorksSection(): React.ReactElement {
     const headingUnderlineWidthRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, 100]), springOptions);
     const headingUnderlineWidth: MotionValue<string> = useMotionTemplate`${headingUnderlineWidthRaw}%`;
     const sectionOpacity: MotionValue<number> = useTransform(reverseScrollProgress, [0, 1], [1, 0.5]);
-    const sectionBlur = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
+    const sectionBlur: MotionValue<string> = useTransform(reverseScrollProgress, [0, 1], ["blur(0)", "blur(2px)"]);
 
     return (
         <React.Fragment>

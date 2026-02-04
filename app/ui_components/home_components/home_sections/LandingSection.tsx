@@ -28,8 +28,14 @@ const skills: Array<string> = [
 export default function LandingSection(): React.JSX.Element {
 
 
+
     // MARK: Values
     const {scrollYProgress} = useScroll();
+    const sectionRef = React.useRef<HTMLElement | null>(null);
+    const {scrollYProgress: sectionTransitionScrollProgress} = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"],
+    });
 
 
     // MARK: Raw values
@@ -44,7 +50,16 @@ export default function LandingSection(): React.JSX.Element {
 
     return (
         <React.Fragment>
-            <main className={"w-screen h-screen relative"}>
+            <motion.main
+
+                ref={sectionRef}
+                className={"w-screen h-screen relative landing_screen"}>
+
+                <SectionTransition
+                    firstTransition={true}
+                    scrollYProgress={sectionTransitionScrollProgress}
+                    color={"white"}/>
+
                 <motion.div
                     animate={{
                         scale: 1,
@@ -71,8 +86,6 @@ export default function LandingSection(): React.JSX.Element {
                     {/*MARK: Actual content screen*/}
                     <section
                         className={"w-screen h-screen absolute top-0 z-[10] !pt-[22.5vw] pointer-events-none"}>
-
-                        <SectionTransition scrollYProgress={scrollYProgress} color={"white"}/>
 
 
                         {/*MARK: Navigation button*/}
@@ -187,7 +200,7 @@ export default function LandingSection(): React.JSX.Element {
                     </section>
 
                 </motion.div>
-            </main>
+            </motion.main>
         </React.Fragment>
     )
 }
