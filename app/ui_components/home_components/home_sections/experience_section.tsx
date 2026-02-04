@@ -93,21 +93,19 @@ export default function ExperienceSection(): React.ReactElement {
         <React.Fragment>
             <section
                 ref={sectionRef}
-                className={`min-h-screen bg-white w-screen !pb-[5rem] overflow-x-hidden !px-[10rem]`}>
+                className={`min-h-screen bg-white w-screen !pb-[5rem] overflow-x-hidden`}>
 
-                <div className={`h-full flex-1 !p-[7rem] justify-center items-center flex`}>
-
-                    <h1 className={`text-[3rem] inline-block text-center`}>
-                        My Experience
+                <div className={`w-full flex text-black !px-[7.3rem] justify-end`}>
+                    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>
+                        My Expertise
                         <motion.div
-                            style={{scaleX: headingUnderlineWidth, transformOrigin: "left"}}
-                            className={`h-[10px] w-full bg-black rounded-full`}/>
+                            style={{width: headingUnderlineWidth}}
+                            className={`w-full h-[20px] bg-black`}/>
                     </h1>
-
                 </div>
 
 
-                <div className={`flex-1/3 h-full !px-[7rem]`}>
+                <div className={`flex-1/3 h-full !px-[7rem] !pt-[7rem]`}>
 
                     <div className={`flex justify-between w-full opacity-50`}>
                         <h1 className={`text-[1.5rem] text-left oswald flex-1 justify-start`}>

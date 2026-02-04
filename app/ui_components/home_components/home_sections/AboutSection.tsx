@@ -43,13 +43,12 @@ export default function AboutSection(): React.ReactElement {
 
 
                 {/*MARK: Section header*/}
-                <div className={`w-full flex justify-center text-black items-center`}>
-                    <h1 className={`text-[3rem] !pt-[5rem] inline-block`}>
-                        My Profile
-
+                <div className={`w-full flex text-black !px-[7.3rem] justify-end !pt-[10rem]`}>
+                    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>
+                        My Expertise
                         <motion.div
-                            style={{width: headingUnderlineWidth, transformOrigin: "center"}}
-                            className={`w-full h-[11px] bg-black rounded-full`}/>
+                            style={{width: headingUnderlineWidth, transformOrigin: "right"}}
+                            className={`w-full h-[20px] bg-black`}/>
                     </h1>
                 </div>
 

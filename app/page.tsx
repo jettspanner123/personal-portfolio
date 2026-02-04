@@ -43,6 +43,10 @@ export default function Home(): React.JSX.Element {
         )()
     }, []);
 
+    React.useEffect(()=> {
+        window.scrollTo(0, 0);
+    }, []);
+
     const {scrollYProgress} = useScroll();
 
     // MARK: State
