@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap";
 /* [next]/internal/font/google/roboto_condensed_600e5ba1.module.css [app-client] (css) */
 @font-face {
   font-family: Roboto Condensed;
@@ -474,7 +475,6 @@
     --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
-    --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --aspect-video: 16 / 9;
     --default-transition-duration: .15s;
@@ -1043,10 +1043,6 @@
     align-items: flex-end;
   }
 
-  .items-start {
-    align-items: flex-start;
-  }
-
   .justify-between {
     justify-content: space-between;
   }
@@ -1189,52 +1185,20 @@
     padding: 7rem !important;
   }
 
-  .\!px-\[1rem\] {
-    padding-inline: 1rem !important;
-  }
-
   .\!px-\[2rem\] {
     padding-inline: 2rem !important;
-  }
-
-  .\!px-\[2vw\] {
-    padding-inline: 2vw !important;
-  }
-
-  .\!px-\[3vw\] {
-    padding-inline: 3vw !important;
-  }
-
-  .\!px-\[6\.7rem\] {
-    padding-inline: 6.7rem !important;
   }
 
   .\!px-\[6rem\] {
     padding-inline: 6rem !important;
   }
 
-  .\!px-\[7\.2rem\] {
-    padding-inline: 7.2rem !important;
-  }
-
   .\!px-\[7\.3rem\] {
     padding-inline: 7.3rem !important;
   }
 
-  .\!px-\[7\.5rem\] {
-    padding-inline: 7.5rem !important;
-  }
-
   .\!px-\[7rem\] {
     padding-inline: 7rem !important;
-  }
-
-  .\!px-\[10rem\] {
-    padding-inline: 10rem !important;
-  }
-
-  .\!px-\[10vw\] {
-    padding-inline: 10vw !important;
   }
 
   .\!py-\[1\.5rem\] {
@@ -1251,10 +1215,6 @@
 
   .\!pt-\[10rem\] {
     padding-top: 10rem !important;
-  }
-
-  .\!pt-\[20rem\] {
-    padding-top: 20rem !important;
   }
 
   .\!pt-\[22\.5vw\] {
@@ -1317,16 +1277,12 @@
     font-size: 1rem;
   }
 
-  .text-\[1vw\] {
-    font-size: 1vw;
+  .text-\[2\.5vw\] {
+    font-size: 2.5vw;
   }
 
   .text-\[2rem\] {
     font-size: 2rem;
-  }
-
-  .text-\[2vw\] {
-    font-size: 2vw;
   }
 
   .text-\[3\.5rem\] {
@@ -1349,16 +1305,12 @@
     font-size: 5vw;
   }
 
-  .text-\[10vw\] {
-    font-size: 10vw;
+  .text-\[7vw\] {
+    font-size: 7vw;
   }
 
   .text-\[12rem\] {
     font-size: 12rem;
-  }
-
-  .text-\[15vw\] {
-    font-size: 15vw;
   }
 
   .leading-none {
@@ -1386,17 +1338,8 @@
     font-weight: var(--font-weight-normal);
   }
 
-  .font-semibold {
-    --tw-font-weight: var(--font-weight-semibold);
-    font-weight: var(--font-weight-semibold);
-  }
-
   .text-nowrap {
     text-wrap: nowrap;
-  }
-
-  .text-\[vw\] {
-    color: vw;
   }
 
   .text-black {
@@ -1496,6 +1439,12 @@ body, html {
 
 .oswald {
   font-family: Oswald, sans-serif;
+}
+
+.cursive {
+  font-family: Fleur De Leah, cursive;
+  font-style: normal;
+  font-weight: lighter;
 }
 
 .geist {

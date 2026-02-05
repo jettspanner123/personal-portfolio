@@ -5,11 +5,7 @@ import {springOptions} from "@/app/constants/animation_constants";
 import {FaLinkedin, FaTwitter} from "react-icons/fa6";
 import MouseMagnetic from "@/app/ui_components/magnetic_mouse/MagneticMouse";
 import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
-import Orb from "@/app/effects/Orb";
-import {compileNonPath} from "next/dist/shared/lib/router/utils/prepare-destination";
 import SectionTransition from "@/app/ui_components/home_components/home_sections/components/section_transition";
-import {useMotion} from "@react-three/drei";
-
 
 export default function ContactSection(): React.ReactElement {
 

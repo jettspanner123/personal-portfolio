@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import {springOptions} from "@/app/constants/animation_constants";
 import SectionTransition from "@/app/ui_components/home_components/home_sections/components/section_transition";
+import SectionHeader from "@/app/ui_components/section_header/SectionHeader";
 
 
 export default function TechStackSection(): React.ReactElement {
@@ -69,21 +70,25 @@ export default function TechStackSection(): React.ReactElement {
 
 
                 {/*MARK: Section header*/}
-                <div className={`w-full flex text-white !px-[7.3rem]`}>
-                    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>
-                        My Expertise
-                        <motion.div
-                            style={{width: headingUnderlineWidth, transformOrigin: "center"}}
-                            className={`w-full h-[20px] bg-white`}/>
-                    </h1>
-                </div>
+                {/*<div className={`w-full flex text-white !px-[7.3rem]`}>*/}
+                {/*    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>*/}
+                {/*        My Expertise*/}
+                {/*        <motion.div*/}
+                {/*            style={{width: headingUnderlineWidth, transformOrigin: "center"}}*/}
+                {/*            className={`w-full h-[20px] bg-white`}/>*/}
+                {/*    </h1>*/}
+                {/*</div>*/}
+                <SectionHeader
+                    text={"My Expertise"}
+                    underlineWidthProgress={headingUnderlineWidth}
+                />
 
 
                 <div
                     ref={descriptionRef}
                     className={`w-screen !pb-[15rem] !mt-[10rem]`}>
 
-                    <p className={"text-white font-bold oswald uppercase text-[3vw] flex flex-wrap justify-start items-center !px-[6rem]"}>
+                    <p className={"text-white font-bold oswald uppercase text-[3vw] flex flex-wrap justify-center items-center !px-[6rem]"}>
                         {
                             description.split(" ").map((word: string, index: number): React.JSX.Element => {
                                 const start: number = index / description.split(" ").length;

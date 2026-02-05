@@ -8,6 +8,7 @@ import {StaticImageData} from "next/image";
 // MARK: Image imports
 import SweatItLogo from "@/app/assets/Dumbbell.png";
 import {useMotion} from "@react-three/drei";
+import SectionHeader from "@/app/ui_components/section_header/SectionHeader";
 
 interface ExperienceProps {
     name: string;
@@ -95,13 +96,12 @@ export default function ExperienceSection(): React.ReactElement {
                 ref={sectionRef}
                 className={`min-h-screen bg-white w-screen !pb-[5rem] overflow-x-hidden`}>
 
-                <div className={`w-full flex text-black !px-[7.3rem] justify-end`}>
-                    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>
-                        My Expertise
-                        <motion.div
-                            style={{width: headingUnderlineWidth}}
-                            className={`w-full h-[20px] bg-black`}/>
-                    </h1>
+                <div className={`w-full flex text-black !px-[7.3rem] justify-start`}>
+                    <SectionHeader
+                        foregroundColor={"black"}
+                        text={"My Experience"}
+                        underlineWidthProgress={headingUnderlineWidth}
+                    />
                 </div>
 
 
