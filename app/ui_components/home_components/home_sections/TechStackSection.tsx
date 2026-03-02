@@ -3,9 +3,7 @@ import React from "react";
 import {
     motion,
     MotionValue,
-    spring,
     useMotionTemplate,
-    useMotionValue,
     useScroll,
     useSpring,
     useTransform
@@ -70,18 +68,13 @@ export default function TechStackSection(): React.ReactElement {
 
 
                 {/*MARK: Section header*/}
-                {/*<div className={`w-full flex text-white !px-[7.3rem]`}>*/}
-                {/*    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>*/}
-                {/*        My Expertise*/}
-                {/*        <motion.div*/}
-                {/*            style={{width: headingUnderlineWidth, transformOrigin: "center"}}*/}
-                {/*            className={`w-full h-[20px] bg-white`}/>*/}
-                {/*    </h1>*/}
-                {/*</div>*/}
-                <SectionHeader
-                    text={"My Expertise"}
-                    underlineWidthProgress={headingUnderlineWidth}
-                />
+                <div>
+                    <SectionHeader
+                        text={"My Expertise"}
+                        foregroundColor={"white"}
+                        underlineWidthProgress={headingUnderlineWidth}
+                    />
+                </div>
 
 
                 <div

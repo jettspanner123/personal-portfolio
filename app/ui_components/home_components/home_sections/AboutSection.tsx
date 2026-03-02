@@ -20,7 +20,7 @@ export default function AboutSection(): React.ReactElement {
     })
 
 
-    const imageScale = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
+    const imageScale: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), springOptions);
 
     const headingUnderlineWidthRaw: MotionValue<number> = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, 100]), springOptions);
     const headingUnderlineWidth: MotionValue<string> = useMotionTemplate`${headingUnderlineWidthRaw}%`;
@@ -43,12 +43,12 @@ export default function AboutSection(): React.ReactElement {
 
 
                 {/*MARK: Section header*/}
-                <div className={`w-full flex text-black !px-[7.3rem] justify-end !pt-[10rem]`}>
-                    <h1 className={`text-[5vw] uppercase font-bold !pt-[5rem] inline-block`}>
+                <div className={`w-full flex text-black !px-[7.3rem] justify-center !pt-[10rem]`}>
+                    <h1 className={`text-[5vw] uppercase font-semibold !pt-[5rem] inline-block`}>
                         My Expertise
                         <motion.div
                             style={{width: headingUnderlineWidth, transformOrigin: "right"}}
-                            className={`w-full h-[20px] bg-black`}/>
+                            className={`w-full h-[18px] bg-black -translate-y-[10px] rounded-2xl`}/>
                     </h1>
                 </div>
 
