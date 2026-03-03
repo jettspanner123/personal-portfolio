@@ -1,9 +1,6 @@
 "use client";
 import React from "react";
-import LandingSection, {
-    NavbarPages,
-    navbarPages
-} from "../app/ui_components/home_components/home_sections/LandingSection";
+import LandingSection from "../app/ui_components/home_components/home_sections/LandingSection";
 import InitialLoader from "@/app/ui_components/landing_loader/InitialLoader";
 import FeaturedWorksSection from "@/app/ui_components/home_components/home_sections/FeaturedWorksSection";
 import CustomMouse from "@/app/ui_components/custom_mouse/CustomMouse";
@@ -26,7 +23,7 @@ import TechStackSection from "@/app/ui_components/home_components/home_sections/
 import {springOptions} from "@/app/constants/animation_constants";
 import {RxCross1} from "react-icons/rx";
 import {CiMenuBurger} from "react-icons/ci";
-import {useMouseHoverState} from "@/app/stores/mouse_store";
+import {MouseHoverStateOptions, useMouseHoverState} from "@/app/stores/mouse_store";
 
 
 // MARK: Image import
@@ -45,6 +42,7 @@ export default function Home(): React.JSX.Element {
 
     React.useEffect(()=> {
         window.scrollTo(0, 0);
+        setMouseHoverState(MouseHoverStateOptions.None);
     }, []);
 
     const {scrollYProgress} = useScroll();
@@ -73,7 +71,7 @@ export default function Home(): React.JSX.Element {
 
     const {isPageChanging} = useHomePageState();
 
-    const {toggleShowMouseHover} = useMouseHoverState();
+    const {toggleShowMouseHover, setMouseHoverState} = useMouseHoverState();
     return (
         <React.Fragment>
             {/*MARK: Top Navbar heading*/}

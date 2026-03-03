@@ -1,114 +1,143 @@
 "use client";
-import React from "react";
-import SweatItMockup from "../assets/FirstMockup.png";
+import React, {useEffect, useMemo} from "react";
 import Image from "next/image";
-import {motion, useScroll, useSpring, useTransform} from "framer-motion";
-import {springOptions} from "@/app/constants/animation_constants";
+import {motion} from "framer-motion";
+import SweatItMockup from "../assets/FirstMockup.png";
 
-export default function Page(): React.ReactElement {
+// Animation Constants
+const TITLE_TEXT = "Sweat-It";
+const TITLE_ANIMATION = {
+    CHAR_DURATION: 0.7,
+    CHAR_DELAY_MULTIPLIER: 0.05,
+    CHAR_BASE_DELAY: 4,
+    CHARACTER_SCALING: {
+        initial: {scaleY: 0},
+        animate: {scaleY: 1},
+    },
+};
 
-    React.useEffect(() => {
-        (
-            async () => {
-                const locomotiveScroll = (await import("locomotive-scroll")).default;
-                const LocomotiveScroll = new locomotiveScroll();
-            }
-        )()
-    }, []);
+const OVERLAY_ANIMATION = {
+    initial: {opacity: 0},
+    animate: {opacity: 1},
+    transition: {
+        duration: 2,
+        delay: 3.5,
+        ease: [0.61, 1, 0.88, 1],
+    },
+};
 
+const HERO_IMAGE_ANIMATION = {
+    initial: {
+        y: "100%",
+        scale: 0.5,
+        borderRadius: "10rem",
+    },
+    animate: {
+        height: "20vh",
+        y: "0%",
+        scale: 1,
+        borderRadius: "0",
+    },
+    transition: {
+        height: {
+            delay: 1.7,
+            duration: 2,
+            ease: [0.85, 0, 0.15, 1],
+        },
+        y: {
+            duration: 2,
+            ease: [0.85, 0, 0.15, 1],
+        },
+        scale: {
+            duration: 2,
+            ease: [0.85, 0, 0.15, 1],
+        },
+        borderRadius: {
+            duration: 2,
+            ease: [0.85, 0, 0.15, 1],
+        },
+    },
+};
 
+// Components
+interface TitleCharacterProps {
+    char: string;
+    index: number;
+}
+
+const TitleCharacter: React.FC<TitleCharacterProps> = ({char, index}) => {
+    const getMarginSpacing = (character: string) => {
+        return character === "_" ? {marginLeft: 20} : {};
+    };
 
     return (
-        <React.Fragment>
-            <main
-                className={`min-h-[200vh] min-w-screen relative`}
-            >
+        <motion.span
+            {...TITLE_ANIMATION.CHARACTER_SCALING}
+            transition={{
+                duration: TITLE_ANIMATION.CHAR_DURATION,
+                delay: index * TITLE_ANIMATION.CHAR_DELAY_MULTIPLIER + TITLE_ANIMATION.CHAR_BASE_DELAY,
+            }}
+            style={getMarginSpacing(char)}
+        >
+            {char !== "_" ? char : ""}
+        </motion.span>
+    );
+};
 
-                <motion.div
-                    className={`flex justify-center uppercase items-center w-screen h-[20vh] absolute text-white text-[5rem] oswald font-medium z-[12] top-[5rem]`}
-                >
+const AnimatedTitle: React.FC = () => {
+    const characters = useMemo(() => TITLE_TEXT.split(""), []);
 
-                    {
-                        "Sweat-It".split("").map((item: string, index: number): React.ReactElement => {
+    return (
+        <motion.div
+            className="flex justify-center uppercase items-center w-screen h-[20vh] absolute text-white text-[5rem] oswald font-medium z-[12] top-[5rem]">
+            {characters.map((char, index) => (
+                <TitleCharacter key={index} char={char} index={index}/>
+            ))}
+        </motion.div>
+    );
+};
 
-                            const leftMargin: number = item === "_" ? 20 : 0;
-                            const rightMargin: number = item === "," ? 20 : 0;
-                            return (
-                                <motion.span
-                                    animate={{ scaleY: 1 }}
-                                    initial={{ scaleY: 0 }}
-                                    transition={{
-                                        duration: 0.7,
-                                        delay: (index * 0.05) + 4,
-                                    }}
-                                    key={index}
-                                    style={{marginLeft: leftMargin, marginRight: rightMargin}}
-                                    className={``}
-                                >
-                                    {item !== "_" ? item : ""}
-                                </motion.span>
-                            )
-                        })
-                    }
+const OverlayGradient: React.FC = () => (
+    <motion.div
+        {...OVERLAY_ANIMATION}
+        className="w-screen origin-bottom h-[20vh] absolute z-[11] bg-gradient-to-t from-black to-transparent"
+    />
+);
 
-                </motion.div>
+const HeroImage: React.FC = () => (
+    <motion.div
+        {...HERO_IMAGE_ANIMATION}
+        className="h-screen w-screen absolute top-0 overflow-hidden"
+    >
+        <Image
+            src={SweatItMockup}
+            alt="Sweat-It Website Mockup"
+            className="object-cover w-full h-full"
+            priority
+        />
+    </motion.div>
+);
 
+// Main Component
+export default function SweatItPage(): React.ReactElement {
+    useEffect(() => {
+        const initializeLocomotiveScroll = async () => {
+            try {
+                const {default: LocomotiveScroll} = await import("locomotive-scroll");
+                new LocomotiveScroll();
+            } catch (error) {
+                console.error("Failed to initialize Locomotive Scroll:", error);
+            }
+        };
 
+        initializeLocomotiveScroll();
+    }, []);
 
-                {/*MARK: Overlay*/}
-                <motion.div
-                    animate={{opacity: 1}}
-                    initial={{opacity: 0}}
-                    transition={{
-                        duration: 2,
-                        delay: 3.5,
-                        ease: [0.61, 1, 0.88, 1]
-                    }}
-                    className={`w-screen origin-bottom h-[20vh] text-white uppercase flex justify-center items-center text-[5rem] oswald font-medium absolute z-[11] bg-gradient-to-t from-black to-transparent`}>
-
-
-                </motion.div>
-
-
-                {/*MARK: Hero Image*/}
-                <motion.div
-                    initial={{
-                        y: "100%",
-                        scale: 0.5,
-                        borderRadius: "10rem"
-                    }}
-                    animate={{
-                        height: "20vh",
-                        y: "0%",
-                        scale: 1,
-                        borderRadius: "0",
-                    }}
-                    transition={{
-                        height: {
-                            delay: 1.7,
-                            duration: 2,
-                            ease: [0.85, 0, 0.15, 1]
-                        },
-                        y: {
-                            duration: 2,
-                            ease: [0.85, 0, 0.15, 1]
-                        },
-                        scale: {
-                            duration: 2,
-                            ease: [0.85, 0, 0.15, 1]
-                        },
-                        borderRadius: {
-                            duration: 2,
-                            ease: [0.85, 0, 0.15, 1],
-                        }
-                    }}
-                    className={`h-screen w-screen absolute top-0 overflow-hidden`}>
-                    <Image
-                        src={SweatItMockup}
-                        alt={""}
-                        className={`object-cover w-full h-full`}/>
-                </motion.div>
-            </main>
-        </React.Fragment>
-    )
+    return (
+        <main className="min-h-[200vh] min-w-screen relative">
+            <HeroImage/>
+            <OverlayGradient/>
+            <AnimatedTitle/>
+        </main>
+    );
 }
