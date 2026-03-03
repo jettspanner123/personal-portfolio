@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useMouseHoverState } from "@/app/stores/mouse_store";
 import SectionTransition from "@/app/ui_components/home_components/home_sections/components/section_transition";
 import MyProfileImage from "@/app/assets/Me.jpeg";
+import SectionHeader from "@/app/ui_components/section_header/SectionHeader";
 
 // MARK: Constants
 const ABOUT_ME_CONTENT = "For over 2 years I have been striving to create bold experiences that connect brands with their audience through design that resonates.";
@@ -89,14 +90,12 @@ export default function AboutSection(): React.ReactElement {
             <SectionTransition scrollYProgress={scrollYProgress} color="white" />
 
             {/* MARK: Section header */}
-            <div className="w-full flex text-black !px-[7.3rem] justify-center !pt-[10rem]">
-                <h1 className="text-[5vw] uppercase font-semibold !pt-[5rem] inline-block">
-                    My Expertise
-                    <motion.div
-                        style={{ width: headingUnderlineWidth, transformOrigin: "right" }}
-                        className="w-full h-[18px] bg-black -translate-y-[10px] rounded-2xl"
-                    />
-                </h1>
+            <div className={"flex justify-center items-center"}>
+                <SectionHeader
+                    text={"My Experience"}
+                    underlineWidthProgress={headingUnderlineWidth}
+                    foregroundColor={"black"}
+                />
             </div>
 
             <div className="w-full !px-[6rem] !mx-auto h-screen !mt-[10rem] flex">

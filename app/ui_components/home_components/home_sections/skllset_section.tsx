@@ -25,6 +25,7 @@ import SQLImage from "@/app/assets/icons/postqresql-seeklogo.svg";
 import PrismaImage from "@/app/assets/icons/prisma-seeklogo.svg";
 import MongoDbImage from "@/app/assets/icons/mongodb-seeklogo.png";
 import ZustandImage from "@/app/assets/icons/zustand.svg";
+import SectionHeader from "@/app/ui_components/section_header/SectionHeader";
 
 
 export default function SkillSetSection(): React.ReactElement {
@@ -56,15 +57,14 @@ export default function SkillSetSection(): React.ReactElement {
                 className={`h-[500vh] bg-green-300 w-screen relative !pb-[25vh]`}
                 ref={sectionRef}>
 
-                <div className={"h-screen w-screen sticky top-0 bg-blue-300"}>
+                <div className={"h-screen w-screen sticky top-0 "}>
                     <div className={`flex-1 !p-[7rem] justify-center items-center flex sticky`}>
 
-                        <h1 className={`text-[3rem] inline-block text-center`}>
-                            My Skill Set
-                            <motion.div
-                                style={{scaleX: headingUnderlineWidth, transformOrigin: "left"}}
-                                className={`h-[10px] w-full bg-black rounded-full`}/>
-                        </h1>
+                        <SectionHeader
+                            text={"My Skill Set"}
+                            underlineWidthProgress={headingUnderlineWidth}
+                            foregroundColor={"black"}
+                        />
 
                     </div>
                 </div>

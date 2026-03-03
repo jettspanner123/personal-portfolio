@@ -8,16 +8,13 @@ import {
   useTransform,
 } from "framer-motion";
 import { springOptions } from "@/app/constants/animation_constants";
-import { StaticImageData } from "next/image";
 import SectionHeader from "@/app/ui_components/section_header/SectionHeader";
-import SweatItLogo from "@/app/assets/Dumbbell.png";
 
 // MARK: Types
 interface ExperienceProps {
   name: string;
   company_name: string;
   duration: string;
-  logo: StaticImageData;
 }
 
 interface AccomplishmentsProps {
@@ -43,31 +40,26 @@ const EXPERIENCES: ExperienceProps[] = [
     name: "Front End Developer",
     company_name: "Cantiliver Labs",
     duration: "December, 2023",
-    logo: SweatItLogo,
   },
   {
     name: "Technical Head",
     company_name: "Geeks For Geeks",
     duration: "2023-2025",
-    logo: SweatItLogo,
   },
   {
     name: "Software Intern",
     company_name: "Infosys, Mysuru",
     duration: "February, 2025",
-    logo: SweatItLogo,
   },
   {
     name: "Front End/UI UX",
     company_name: "HelioWeb, Bikaner",
     duration: "June, 2025",
-    logo: SweatItLogo,
   },
   {
     name: "Full Stack Developer",
     company_name: "JungleWorks, Mohali",
     duration: "Feb, 2026",
-    logo: SweatItLogo,
   },
 ];
 
@@ -172,6 +164,7 @@ export default function ExperienceSection(): React.ReactElement {
     springOptions
   );
   const headingUnderlineWidth = useMotionTemplate`${headingUnderlineWidthRaw}%`;
+
 
   // Column configurations for mapping data
   const experienceDataColumns = [

@@ -102,7 +102,7 @@ export default function TechStackSection(): React.ReactElement {
       <SectionTransition scrollYProgress={scrollYProgress} color="black" />
 
       {/* MARK: Section Header */}
-      <div>
+      <div className={`flex justify-center items-center`}>
         <SectionHeader
           text="My Expertise"
           foregroundColor="white"

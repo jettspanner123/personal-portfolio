@@ -12,6 +12,7 @@ import SweatItLogo from "@/app/assets/Dumbbell.png";
 import MedfosysMockup from "@/app/assets/MedfosysMockup.png";
 import SweatItWebsiteMockup from "@/app/assets/SweatItWebsiteMockup.png";
 import MedfosysLogo from "@/app/assets/MedfosysIcon.png";
+import SectionHeader from "@/app/ui_components/section_header/SectionHeader";
 
 // MARK: Types
 interface ProjectData {
@@ -85,17 +86,6 @@ export default function FeaturedWorksSection(): React.ReactElement {
     >
       {/* MARK: Scroll Section Change Interaction */}
       <SectionTransition scrollYProgress={scrollYProgress} color="white" />
-
-      {/* MARK: Section Heading */}
-      <div className="w-full flex justify-center items-center">
-        <h1 className="text-[3rem] !pt-[5rem] inline-block">
-          Featured Works
-          <motion.div
-            style={{ width: headingUnderlineWidth, transformOrigin: "center" }}
-            className="w-full h-[11px] bg-black rounded-full"
-          />
-        </h1>
-      </div>
 
       {/* MARK: Featured Projects */}
       {FEATURED_PROJECTS.map((project, index) => {
